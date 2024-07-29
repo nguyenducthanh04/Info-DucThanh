@@ -35,18 +35,27 @@ function App() {
         setIsDarkMode((prevMode) => !prevMode);
     };
     useEffect(() => {
-        const projectData = async () => {
-            const response = await axios.get(`${apiProject}`);
-            setProjects(response.data);
+        const fetchProjectData = async () => {
+            try {
+                const response = await axios.get(`${apiProject}`);
+                setProjects(response.data);
+            } catch (error) {
+                console.error("Error fetching projects:", error);
+            }
         };
-        projectData();
+        fetchProjectData();
     }, []);
+
     useEffect(() => {
-        const interestData = async () => {
-            const response = await axios.get(`${apiInterest}`);
-            setInterests(response.data);
+        const fetchInterestData = async () => {
+            try {
+                const response = await axios.get(`${apiInterest}`);
+                setInterests(response.data);
+            } catch (error) {
+                console.error("Error fetching interests:", error);
+            }
         };
-        interestData();
+        fetchInterestData();
     }, []);
     useEffect(() => {
         document.body.style.backgroundColor = isDarkMode ? "black" : "white";
@@ -282,7 +291,7 @@ function App() {
                                     <h3>Những câu nói mình thích nhất</h3>
                                 </div>
                                 <div className="slide">
-                                    <Slide>
+                                    <Slide key={interests.length}>
                                         {interests?.map((interest) => (
                                             <div
                                                 className="each-slide-effect"
@@ -322,46 +331,6 @@ function App() {
                                                 </div>
                                             </div>
                                         ))}
-                                        {/* <div className="each-slide-effect">
-                                            <div
-                                                style={{
-                                                    background: ``,
-                                                    borderRadius: "20px",
-                                                }}
-                                            >
-                                                <div className="motivation-item">
-                                                    <div className="image-person">
-                                                        <img
-                                                            src={
-                                                                presidentHoChiMinh
-                                                            }
-                                                        ></img>
-                                                    </div>
-                                                    <div className="person-info">
-                                                        <h3 className="name-person">
-                                                            Chủ tịch Hồ Chí Minh
-                                                        </h3>
-                                                        <div classname="said">
-                                                            <em>
-                                                                "Học để làm
-                                                                việc, làm người,
-                                                                làm cán bộ. Học
-                                                                để phụng sự Đoàn
-                                                                thể, giai cấp và
-                                                                nhân dân, Tổ
-                                                                quốc và nhân
-                                                                loại. Muốn đạt
-                                                                được mục đích
-                                                                thì phải cần,
-                                                                kiệm, liêm,
-                                                                chính, chí công
-                                                                vô tư."
-                                                            </em>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> */}
                                     </Slide>
                                 </div>
                             </div>
