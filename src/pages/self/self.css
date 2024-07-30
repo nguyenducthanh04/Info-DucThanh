@@ -1,88 +1,14 @@
-.App {
-    margin-bottom: 30px;
-}
-.info {
-    width: 60vw;
-    height: 230px;
-    background: #87ceeb;
-    margin-top: 40px;
-    border-radius: 30px;
-    display: flex;
-}
-.personal-info {
-    display: flex;
-}
-.avatar img {
-    width: 160px;
-    height: 160px;
-    border-radius: 60px;
-    padding: 35px;
-}
-.person-name-social {
-    padding-top: 15px;
-    padding-bottom: 15px;
-}
-.social {
-    display: flex;
-    margin-top: 45px;
-}
-.icon-world-light,
-.icon-world-dark,
-.icon-github,
-.icon-tiktok,
-.icon-instagram,
-.icon-facebook {
-    width: 20px;
-    height: 20px;
-}
-
-.icon {
-    width: 40px;
-    height: 40px;
-    background: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 15px;
-    cursor: pointer;
-    &:hover {
-        background: #ee82ee;
-    }
-}
-.vertical-inline {
-    border-left: 2px solid rgb(170, 167, 167);
-    height: 170px;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    margin-left: 100px;
-    margin-right: 100px;
-}
-.info-text {
-    display: flex;
-}
-.title-info-text {
-    color: grey;
-}
-.info-text-2,
-.info-text-1 {
-    margin-top: 25px;
-}
-.phone,
-.email {
-    margin-right: 35px;
-}
 .content {
     margin-top: 33px;
     display: flex;
 }
-.sidebar {
+/* .sidebar {
     width: 162px;
     height: 450px;
-    background: #87ceeb;
+    background: #14b8a633;
     border-radius: 30px;
     padding: 10px;
-}
+} */
 .interest,
 .education,
 .self {
@@ -114,7 +40,8 @@
     height: 60px;
 }
 .main-self {
-    background: #87ceeb;
+    background: #14b8a633;
+    color: white;
     width: 48.5vw;
     margin-left: 33px;
     border-radius: 30px;
@@ -136,10 +63,11 @@
     border-bottom: solid 3px #ee82ee;
     width: 140px;
     margin-left: 20px;
-    height: 40px;
+    height: 60px;
 }
 .about-title h1 {
     font-weight: bold;
+    padding-top: 20px;
 }
 .about-content {
     width: 95%;
@@ -177,7 +105,7 @@
 }
 .name-project a {
     text-decoration: none;
-    color: black;
+    color: white;
 }
 .motivation {
     margin-bottom: 50px;
@@ -360,7 +288,7 @@
 
 /* Giao diện mobile */
 .info-mobile {
-    background: #87ceeb;
+    background: #14b8a633;
     width: 90vw;
     text-align: center;
     margin-top: 50px;
@@ -425,7 +353,7 @@
 .sidebar-mobile {
     width: 100vw;
     height: 100px;
-    background: #e6e6fa;
+    background: #14b8a633;
     opacity: 0.9;
     display: flex;
     justify-content: center;
@@ -722,4 +650,7 @@
     padding: 10px;
     text-align: center;
     background: #ee82ee;
+}
+.name-project-mobile h4 {
+    color: white;
 }

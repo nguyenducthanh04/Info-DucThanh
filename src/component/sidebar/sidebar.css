@@ -1,0 +1,88 @@
+/* SideBar */
+.dark-mode-sidebar {
+    width: 162px;
+    height: 450px;
+    background: #14b8a633;
+    border-radius: 30px;
+    padding: 10px;
+}
+.sidebar {
+    width: 162px;
+    height: 450px;
+    background: #14b8a633;
+    color: white;
+    border-radius: 30px;
+    padding: 10px;
+}
+.link-sidebar {
+    text-decoration: none;
+    color: black;
+}
+.interest,
+.education,
+.self {
+    width: 110px;
+    height: 110px;
+    background: white;
+    border-radius: 20px;
+    cursor: pointer;
+    margin: 15px;
+    padding: 10px;
+    text-align: center;
+}
+.icon-interest,
+.icon-edu,
+.icon-self {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.title-self {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.heart-icon,
+.book-icon,
+.person-icon {
+    width: 60px;
+    height: 60px;
+}
+.dark-mode-sidebar-mobile {
+    width: 100vw;
+    height: 100px;
+    background: #14b8a633;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.icon-interest-mobile,
+.icon-edu-mobile,
+.icon-self-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.heart-icon-mobile,
+.book-icon-mobile,
+.person-icon-mobile {
+    width: 30px;
+    height: 30px;
+}
+.title-self-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.title-edu-mobile h5,
+.title-interest-mobile h5,
+.title-self-mobile h5 {
+    margin: 0;
+    font-size: 0.5rem;
+    margin-top: 10px;
+}
