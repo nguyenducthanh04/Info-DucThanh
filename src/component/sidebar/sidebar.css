@@ -8,7 +8,7 @@
 }
 .sidebar {
     width: 162px;
-    height: 450px;
+    height: auto;
     background: #14b8a633;
     color: white;
     border-radius: 30px;
@@ -85,4 +85,19 @@
     margin: 0;
     font-size: 0.5rem;
     margin-top: 10px;
+}
+.sidebar-mobile {
+    width: 100vw;
+    height: 100px;
+    background: #14b8a633;
+    opacity: 0.9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
 }

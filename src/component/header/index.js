@@ -9,6 +9,9 @@ import tiktokIcon from "../../assets/images/video.png";
 import githubIcon from "../../assets/images/github.png";
 import worldDark from "../../assets/images/globe.png";
 import worldLight from "../../assets/images/earth.png";
+import mailIcon from "../../assets/images/email.png";
+import accountIcon from "../../assets/images/account.png";
+import { Link } from "react-router-dom";
 function Header() {
     const [isDarkMode, setIsDarkMode] = useState(false);
     const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
@@ -64,15 +67,7 @@ function Header() {
                                         ></img>
                                     </div>
                                 </a>
-                                <a href="">
-                                    <div className="icon-mobile">
-                                        <img
-                                            src={tiktokIcon}
-                                            className="icon-tiktok-mobile"
-                                            alt="tiktok"
-                                        ></img>
-                                    </div>
-                                </a>
+
                                 <a
                                     href="https://github.com/nguyenducthanh04"
                                     target="_blank"
@@ -86,6 +81,15 @@ function Header() {
                                         ></img>
                                     </div>
                                 </a>
+                                <Link to={"/send-mail"}>
+                                    <div className="icon-mobile">
+                                        <img
+                                            src={mailIcon}
+                                            className="icon-mail-mobile"
+                                            alt="tiktok"
+                                        ></img>
+                                    </div>
+                                </Link>
                                 {isDarkMode ? (
                                     <div
                                         className="icon-mobile"
@@ -109,6 +113,15 @@ function Header() {
                                         ></img>
                                     </div>
                                 )}
+                                <a href="">
+                                    <div className="icon-mobile-last">
+                                        <img
+                                            src={accountIcon}
+                                            className="icon-account-mobile"
+                                            alt="tiktok"
+                                        ></img>
+                                    </div>
+                                </a>
                             </div>
                             <div className="info-text-mobile">
                                 <div className="info-text-1-mobile">
@@ -184,15 +197,6 @@ function Header() {
                                         ></img>
                                     </div>
                                 </a>
-                                <a href="">
-                                    <div className="icon">
-                                        <img
-                                            src={tiktokIcon}
-                                            className="icon-tiktok"
-                                            alt="tiktok"
-                                        ></img>
-                                    </div>
-                                </a>
                                 <a
                                     href="https://github.com/nguyenducthanh04"
                                     target="_blank"
@@ -206,6 +210,15 @@ function Header() {
                                         ></img>
                                     </div>
                                 </a>
+                                <Link to={"/send-mail"}>
+                                    <div className="icon">
+                                        <img
+                                            src={mailIcon}
+                                            className="icon-mail"
+                                            alt="tiktok"
+                                        ></img>
+                                    </div>
+                                </Link>
                                 {isDarkMode ? (
                                     <div className="icon" onClick={toggleTheme}>
                                         <img
@@ -223,6 +236,15 @@ function Header() {
                                         ></img>
                                     </div>
                                 )}
+                                <a href="">
+                                    <div className="icon">
+                                        <img
+                                            src={accountIcon}
+                                            className="icon-account"
+                                            alt="tiktok"
+                                        ></img>
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     </div>

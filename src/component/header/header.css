@@ -39,6 +39,8 @@
 .icon-world-dark,
 .icon-github,
 .icon-tiktok,
+.icon-account,
+.icon-mail,
 .icon-instagram,
 .icon-facebook {
     width: 20px;
@@ -56,7 +58,7 @@
     margin-right: 15px;
     cursor: pointer;
     &:hover {
-        background: #ee82ee;
+        background: #00bfff;
     }
 }
 .vertical-inline {
@@ -109,13 +111,13 @@
     align-items: center;
     margin-top: 30px;
 }
-.social-mobile > :last-child {
-    margin-right: 0;
-}
+
 .icon-world-light-mobile,
 .icon-world-dark-mobile,
 .icon-github-mobile,
 .icon-tiktok-mobile,
+.icon-account-mobile,
+.icon-mail-mobile,
 .icon-instagram-mobile,
 .icon-facebook-mobile {
     width: 20px;
@@ -130,6 +132,15 @@
     align-items: center;
     justify-content: center;
     margin-right: 15px;
+}
+.icon-mobile-last {
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .title-info-text-mobile {
     color: grey;
@@ -153,4 +164,5 @@
     width: 100%;
     height: 80px;
 }
+
 /* Header */

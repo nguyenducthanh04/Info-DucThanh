@@ -1,0 +1,206 @@
+.main-self-send-mail {
+    background: #14b8a633;
+    color: white;
+    width: 48.5vw;
+    margin-left: 33px;
+    border-radius: 30px;
+    margin-bottom: 30px;
+    margin-top: 21px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main-self-send-mail-mobile {
+    background: #14b8a633;
+    width: 90vw;
+    margin-top: 30px;
+    border-radius: 30px;
+    margin-bottom: 30px;
+}
+.form-button,
+input {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+}
+
+.bg-wrapper {
+    display: flex;
+}
+
+.content-container {
+    flex: 0 1 700px;
+    margin: auto;
+    padding: 10px;
+    margin-bottom: 100px;
+}
+
+.display-screen {
+    position: relative;
+    background: #3e3e3e;
+    border-radius: 15px;
+}
+.display-screen-mobile {
+    position: relative;
+    background: #3e3e3e;
+    border-radius: 15px;
+    width: 90;
+}
+.display-screen:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 20px;
+    right: 20px;
+    bottom: 0;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    z-index: -1;
+}
+
+.display-header {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background: #4d4d4f;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.header-left {
+    margin-right: auto;
+}
+
+.header-button {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-right: 3px;
+    border-radius: 8px;
+    background: white;
+}
+
+.header-button.close-btn {
+    background: #ed1c6f;
+}
+
+.header-button.maximize-btn {
+    background: #e8e925;
+}
+
+.header-button.minimize-btn {
+    background: #74c54f;
+}
+
+.header-right {
+    display: flex;
+}
+
+.header-ellipsis {
+    width: 3px;
+    height: 3px;
+    margin-left: 2px;
+    border-radius: 8px;
+    background: #999;
+}
+
+.display-body {
+    display: flex;
+}
+
+.body-section {
+    flex: 1;
+    padding: 50px;
+}
+
+.left-side {
+    display: flex;
+    flex-direction: column;
+}
+
+.application-title {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    color: #ea1d6f;
+    font-size: 26px;
+}
+
+.application-title:after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 25px;
+    height: 4px;
+    background: #ea1d6f;
+}
+
+.application-contact {
+    margin-top: auto;
+    font-size: 8px;
+    color: #888;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group.message-group {
+    margin-top: 40px;
+}
+
+.form-group.action-buttons {
+    margin-bottom: 0;
+    text-align: right;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px 0;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #666;
+    color: #ddd;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-control::placeholder {
+    color: #666;
+}
+
+.form-control:focus {
+    border-bottom-color: #ddd;
+}
+
+.form-button {
+    background: none;
+    border: none;
+    color: #ea1d6f;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+}
+
+.form-button:hover {
+    color: #b9134f;
+}
+.send-email-title {
+    text-align: center;
+}
+.send-email-title-mobile {
+    width: 100%;
+    height: 60px;
+    text-align: center;
+}
+.send-email-title-mobile h1 {
+    color: #00ff00;
+    padding-top: 20px;
+}
+.send-email-title h1 {
+    color: #00ff00;
+}

@@ -7,7 +7,7 @@ import "./sidebar.css";
 import personIcon from "../../assets/images/person.png";
 import bookIcon from "../../assets/images/open-book.png";
 import heartIcon from "../../assets/images/heart.png";
-
+import blogIcon from "../../assets/images/blogging.png";
 function SideBar() {
     const [activeSection, setActiveSection] = useState("about");
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -91,6 +91,27 @@ function SideBar() {
                             </div>
                         </div>
                     </Link>
+                    <Link to={"/interest"} className="link-sidebar">
+                        <div
+                            className={`${
+                                activeSection === "interest"
+                                    ? "active-btn"
+                                    : "interest-mobile"
+                            }`}
+                            onClick={() => setActiveSection("interest")}
+                        >
+                            <div className="icon-interest-mobile">
+                                <img
+                                    src={blogIcon}
+                                    className="heart-icon-mobile"
+                                    alt="interest"
+                                ></img>
+                            </div>
+                            <div className="title-interest-mobile">
+                                <h5>BLOG</h5>
+                            </div>
+                        </div>
+                    </Link>
                 </div>
             ) : (
                 <div
@@ -146,6 +167,23 @@ function SideBar() {
                             </div>
                             <div className="title-interest">
                                 <h3>SỞ THÍCH</h3>
+                            </div>
+                        </div>
+                    </Link>
+                    <Link to={"/interest"} className="link-sidebar">
+                        <div
+                            className="interest"
+                            onClick={() => setActiveSection("interest")}
+                        >
+                            <div className="icon-interest">
+                                <img
+                                    src={blogIcon}
+                                    className="heart-icon"
+                                    alt="interest"
+                                ></img>
+                            </div>
+                            <div className="title-interest">
+                                <h3>BLOG</h3>
                             </div>
                         </div>
                     </Link>
