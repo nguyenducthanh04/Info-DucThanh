@@ -91,7 +91,7 @@ function SideBar() {
                             </div>
                         </div>
                     </Link>
-                    <Link to={"/interest"} className="link-sidebar">
+                    <Link to={"/blog"} className="link-sidebar">
                         <div
                             className={`${
                                 activeSection === "interest"
@@ -170,7 +170,7 @@ function SideBar() {
                             </div>
                         </div>
                     </Link>
-                    <Link to={"/interest"} className="link-sidebar">
+                    <Link to={"/blog"} className="link-sidebar">
                         <div
                             className="interest"
                             onClick={() => setActiveSection("interest")}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "react-slideshow-image/dist/styles.css";
 import { useMediaQuery } from "react-responsive";
 import "./header.css";
+import { useUser } from "../../Users/UserContext";
 import avatar from "../../assets/images/thanhdz.jpg";
 import facebookIcon from "../../assets/images/facebook.png";
 import instagramIcon from "../../assets/images/instagram.png";
@@ -13,14 +14,15 @@ import mailIcon from "../../assets/images/email.png";
 import accountIcon from "../../assets/images/account.png";
 import { Link } from "react-router-dom";
 function Header() {
+    const { userData } = useUser();
     const [isDarkMode, setIsDarkMode] = useState(false);
+
     const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+
     const toggleTheme = () => {
         setIsDarkMode((prevMode) => !prevMode);
     };
-    // useEffect(() => {
-    //     document.body.style.backgroundColor = isDarkMode ? "black" : "white";
-    // }, [isDarkMode]);
+
     return (
         <div>
             {isMobile ? (
@@ -113,7 +115,7 @@ function Header() {
                                         ></img>
                                     </div>
                                 )}
-                                <a href="">
+                                <Link to={"/profile"}>
                                     <div className="icon-mobile-last">
                                         <img
                                             src={accountIcon}
@@ -121,7 +123,7 @@ function Header() {
                                             alt="tiktok"
                                         ></img>
                                     </div>
-                                </a>
+                                </Link>
                             </div>
                             <div className="info-text-mobile">
                                 <div className="info-text-1-mobile">
@@ -215,7 +217,7 @@ function Header() {
                                         <img
                                             src={mailIcon}
                                             className="icon-mail"
-                                            alt="tiktok"
+                                            alt="mail"
                                         ></img>
                                     </div>
                                 </Link>
@@ -236,15 +238,21 @@ function Header() {
                                         ></img>
                                     </div>
                                 )}
-                                <a href="">
-                                    <div className="icon">
+                                <Link to={"/profile"}>
+                                    {userData ? (
                                         <img
-                                            src={accountIcon}
-                                            className="icon-account"
-                                            alt="tiktok"
+                                            src={userData.avatar}
+                                            className="avatar-user"
                                         ></img>
-                                    </div>
-                                </a>
+                                    ) : (
+                                        <div className="icon">
+                                            <img
+                                                src={accountIcon}
+                                                className="icon-account"
+                                            ></img>
+                                        </div>
+                                    )}
+                                </Link>
                             </div>
                         </div>
                     </div>

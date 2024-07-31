@@ -197,10 +197,14 @@ input {
     height: 60px;
     text-align: center;
 }
-.send-email-title-mobile h1 {
+.send-email-title-mobile h4 {
     color: #00ff00;
-    padding-top: 20px;
+    padding-top: 30px;
 }
-.send-email-title h1 {
+.send-email-title {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.send-email-title h4 {
     color: #00ff00;
 }

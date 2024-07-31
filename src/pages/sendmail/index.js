@@ -19,7 +19,7 @@ function SendMail() {
                 >
                     <div className="contact-section">
                         <div className="send-email-title-mobile">
-                            <h1>Gửi mail</h1>
+                            <h4>Hãy gửi những điều tốt đẹp đến với mình...</h4>
                         </div>
                         <div className="contact-method">
                             <div className="bg-wrapper">
@@ -96,7 +96,7 @@ function SendMail() {
                 >
                     <div className="contact-section">
                         <div className="send-email-title">
-                            <h1>Gửi mail</h1>
+                            <h4>Hãy gửi những điều tốt đẹp đến với mình...</h4>
                         </div>
                         <div className="contact-method">
                             <div className="bg-wrapper">
