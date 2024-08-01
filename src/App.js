@@ -11,6 +11,7 @@ import SendMail from "./pages/sendmail/index.js";
 import Login from "./pages/login/index.js";
 import Profile from "./pages/profile/index.js";
 import Blog from "./pages/blog/index.js";
+import BlogDetail from "./pages/blog-detail/index.js";
 const App = () => {
     return (
         <UserProvider>
@@ -33,6 +34,10 @@ const App = () => {
                             <Route path="/login" element={<Login />} />
                             <Route path="/profile" element={<Profile />} />
                             <Route path="/blog" element={<Blog />} />
+                            <Route
+                                path="/blog-detail/:title"
+                                element={<BlogDetail />}
+                            />
                         </Routes>
                     </div>
                 </div>

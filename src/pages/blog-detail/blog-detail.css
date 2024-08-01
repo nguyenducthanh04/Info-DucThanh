@@ -1,0 +1,93 @@
+.dark-mode-main-self-blog-detail-mobile {
+    background: #14b8a633;
+    width: 90vw;
+    color: white;
+    border-radius: 30px;
+    margin-bottom: 30px;
+}
+.main-self-blog-detail-mobile {
+    background: #14b8a633;
+    color: white;
+    width: 90vw;
+    height: auto;
+    border-radius: 30px;
+    margin-bottom: 300px;
+    margin-top: 30px;
+}
+.dark-mode-main-self-blog-detail {
+    background: #14b8a633;
+    width: 48.5vw;
+    margin-left: 33px;
+    border-radius: 30px;
+    color: white;
+}
+.main-self-blog-detail {
+    background: #14b8a633;
+    color: white;
+    width: 48.5vw;
+    margin-left: 33px;
+    border-radius: 30px;
+    margin-bottom: 30px;
+    margin-top: 21px;
+}
+.container img {
+    width: 46vw;
+}
+.container-mobile img {
+    width: 80vw;
+}
+.avatar-user-mobile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.avatar-user img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.comment-user {
+    margin-left: 20px;
+}
+.comment-user em {
+    color: green;
+}
+
+.comment-input textarea {
+    width: 39vw;
+}
+.comment-input-mobile textarea {
+    width: 40vw;
+}
+.comment-input {
+    margin-left: 8px;
+    display: flex;
+    justify-content: center;
+}
+.input-wrapper-mobile,
+.input-wrapper {
+    display: flex;
+    align-items: center;
+}
+.input-wrapper-mobile textarea,
+.input-wrapper textarea {
+    flex-grow: 1;
+    margin-right: 10px;
+    height: 30px;
+    padding: 5px;
+    outline: none;
+    background: transparent;
+    color: white;
+}
+.btn-comment-mobile,
+.btn-comment {
+    height: 43px;
+    cursor: pointer;
+    background: transparent;
+    border: solid 1px green;
+    color: white;
+}
+.comment-user-mobile em {
+    color: green;
+}
