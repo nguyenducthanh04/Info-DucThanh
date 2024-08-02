@@ -6,7 +6,7 @@ import { useMediaQuery } from "react-responsive";
 import "./sidebar.css";
 import personIcon from "../../assets/images/person.png";
 import bookIcon from "../../assets/images/open-book.png";
-import heartIcon from "../../assets/images/heart.png";
+import heartIcon from "../../assets/images/heart-sidebar.png";
 import blogIcon from "../../assets/images/blogging.png";
 function SideBar() {
     const [activeSection, setActiveSection] = useState("about");

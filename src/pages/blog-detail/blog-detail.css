@@ -65,6 +65,7 @@
     display: flex;
     justify-content: center;
 }
+.input-wrapper-mobile-edit,
 .input-wrapper-mobile,
 .input-wrapper {
     display: flex;
@@ -80,6 +81,26 @@
     background: transparent;
     color: white;
 }
+.input-wrapper-mobile-edit textarea {
+    flex-grow: 1;
+    margin-right: 10px;
+    height: 30px;
+    padding: 5px;
+    outline: none;
+}
+.btn-comment-mobile-edit {
+    height: 43px;
+    cursor: pointer;
+    background: green;
+    border: solid 1px green;
+    color: white;
+}
+.btn-undo {
+    height: 43px;
+    cursor: pointer;
+    background: yellow;
+    margin-left: 8px;
+}
 .btn-comment-mobile,
 .btn-comment {
     height: 43px;
@@ -87,7 +108,80 @@
     background: transparent;
     border: solid 1px green;
     color: white;
+    &:hover {
+        background: green;
+    }
 }
 .comment-user-mobile em {
     color: green;
+}
+.btn-heart {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 20px;
+}
+.icon-heart-not-mount {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+.icon-heart-not-mount-mobile {
+    width: 15px;
+    height: 15px;
+}
+.quantity-mobile {
+    margin-right: 30px;
+    font-size: 1.2rem;
+    margin-left: 5px;
+}
+.quantity {
+    margin-right: 30px;
+    font-size: 1.5rem;
+    margin-left: 5px;
+}
+.btn-click {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: none;
+}
+.comment-item {
+    display: flex;
+    padding: 5px 0px;
+    border-bottom: solid 1px green;
+    margin-bottom: 20px;
+}
+.comment-item-child-mobile,
+.comment-item-child {
+    display: flex;
+    padding: 5px 0px;
+    border-bottom: solid 1px green;
+    margin-bottom: 20px;
+    margin-left: 40px;
+}
+.avatar-user-comment-item {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.list-comment {
+    margin-left: 20px;
+}
+.comment-item-mobile {
+    display: flex;
+    padding: 5px 0px;
+    border-bottom: solid 1px green;
+    margin-bottom: 15px;
+}
+.avatar-user-comment-item-mobile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.list-comment-mobile {
+    margin-top: 0;
 }

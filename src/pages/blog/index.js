@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
+import { FaEye } from "react-icons/fa";
 import moment from "moment";
 import axios from "axios";
 import "./blog.css";
@@ -61,6 +62,13 @@ function Blog() {
                                                             blog.createdAt
                                                         ).format("DD/MM/YYYY")}
                                                     </em>
+                                                    <em
+                                                        style={{
+                                                            marginLeft: "20px",
+                                                        }}
+                                                    >
+                                                        {blog.view} lượt xem
+                                                    </em>
                                                 </div>
                                             </div>
                                         </div>
@@ -111,6 +119,13 @@ function Blog() {
                                                         {moment(
                                                             blog.createdAt
                                                         ).format("DD/MM/YYYY")}
+                                                    </em>
+                                                    <em
+                                                        style={{
+                                                            marginLeft: "50px",
+                                                        }}
+                                                    >
+                                                        {blog.view} lượt xem
                                                     </em>
                                                 </div>
                                             </div>
