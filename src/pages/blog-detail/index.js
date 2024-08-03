@@ -62,11 +62,13 @@ function BlogDetail() {
     }, [title, token]);
     const fetchComments = async () => {
         try {
-            const response = await axios.get(
-                `${baseUrl}/blog/get-all-comment/${blogDataDetail.id}`
-            );
-            setComments(response.data);
-            console.log("i:", response.data);
+            if (blogDataDetail && blogDataDetail.id) {
+                const response = await axios.get(
+                    `${baseUrl}/blog/get-all-comment/${blogDataDetail.id}`
+                );
+                setComments(response.data);
+                console.log("i:", response.data);
+            }
         } catch (error) {
             console.error("Error fetching comments:", error);
             toast.error("Có lỗi xảy ra, vui lòng chờ tôi fix bug.");
@@ -74,10 +76,12 @@ function BlogDetail() {
     };
     const fetchCommentChild = async () => {
         try {
-            const response = await axios.get(
-                `${baseUrl}/blog/get-comment-child/${blogDataDetail.id}`
-            );
-            setCommentChild(response.data);
+            if (blogDataDetail && blogDataDetail.id) {
+                const response = await axios.get(
+                    `${baseUrl}/blog/get-comment-child/${blogDataDetail.id}`
+                );
+                setCommentChild(response.data);
+            }
         } catch (error) {
             console.error("Error fetching comments:", error);
             toast.error("Có lỗi xảy ra, vui lòng chờ tôi fix bug.");
@@ -310,10 +314,17 @@ function BlogDetail() {
                                                             "flex-end",
                                                     }}
                                                 >
-                                                    {parseInt(
+                                                    {comment &&
+                                                    comment.User &&
+                                                    comment.User.id &&
+                                                    userParse &&
+                                                    userParse.id &&
+                                                    parseInt(
                                                         comment.User.id
                                                     ) ===
-                                                    parseInt(userParse.id) ? (
+                                                        parseInt(
+                                                            userParse.id
+                                                        ) ? (
                                                         <div>
                                                             <span
                                                                 style={{
@@ -413,13 +424,19 @@ function BlogDetail() {
                                                                     "flex-end",
                                                             }}
                                                         >
-                                                            {parseInt(
+                                                            {commentChildItem &&
+                                                            commentChildItem.User &&
+                                                            commentChildItem
+                                                                .User.id &&
+                                                            userParse &&
+                                                            userParse.id &&
+                                                            parseInt(
                                                                 commentChildItem
                                                                     .User.id
                                                             ) ===
-                                                            parseInt(
-                                                                userParse.id
-                                                            ) ? (
+                                                                parseInt(
+                                                                    userParse.id
+                                                                ) ? (
                                                                 <div>
                                                                     <span
                                                                         style={{
@@ -620,8 +637,13 @@ function BlogDetail() {
                                                     justifyContent: "flex-end",
                                                 }}
                                             >
-                                                {parseInt(comment.User.id) ===
-                                                parseInt(userParse.id) ? (
+                                                {comment &&
+                                                comment.User &&
+                                                comment.User.id &&
+                                                userParse &&
+                                                userParse.id &&
+                                                parseInt(comment.User.id) ===
+                                                    parseInt(userParse.id) ? (
                                                     <div>
                                                         <span
                                                             style={{
@@ -772,13 +794,19 @@ function BlogDetail() {
                                                                 "flex-end",
                                                         }}
                                                     >
-                                                        {parseInt(
+                                                        {commentChildItem &&
+                                                        commentChildItem.User &&
+                                                        commentChildItem.User
+                                                            .id &&
+                                                        userParse &&
+                                                        userParse.id &&
+                                                        parseInt(
                                                             commentChildItem
                                                                 .User.id
                                                         ) ===
-                                                        parseInt(
-                                                            userParse.id
-                                                        ) ? (
+                                                            parseInt(
+                                                                userParse.id
+                                                            ) ? (
                                                             <div>
                                                                 <span
                                                                     style={{

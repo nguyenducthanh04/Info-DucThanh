@@ -35,7 +35,11 @@ function Login() {
                             </h4>
                         </div>
                         <div className="btn-login">
-                            <button className="btn-login-google">
+                            <button
+                                className="btn-login-google"
+                                onClick={handleLogin}
+                            >
+                                <FaGoogle className="icon-google" />
                                 <em>Đăng nhập với Google</em>
                             </button>
                         </div>
