@@ -1,18 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { useUser } from "../../Users/UserContext.js";
+import { ToastContainer, toast } from "react-toastify";
+import { FaCheckCircle } from "react-icons/fa";
+import "react-toastify/dist/ReactToastify.css";
 import "./profile.css";
 import axios from "axios";
+import { baseUrl } from "../../api-url/base-url.js";
 import LoginPage from "../login/index.js";
 function Profile() {
     const [isDarkMode, setIsDarkMode] = useState(false);
     const [user, setUser] = useState(null);
     const [token, setToken] = useState(null);
+    const [commentByUser, setCommentByUser] = useState([]);
     const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
     const location = useLocation();
     const navigate = useNavigate();
     const { login, logout } = useUser();
+    const userData = localStorage.getItem("user");
+    const userDataParse = JSON.parse(userData);
     useEffect(() => {
         // Lấy thông tin từ URL và lưu vào localStorage
         const params = new URLSearchParams(location.search);
@@ -31,8 +38,6 @@ function Profile() {
 
         if (id && name && email && avatar) {
             const userCurrent = { id, name, email, avatar };
-            // localStorage.setItem("user", JSON.stringify(userItem));
-            // setUser(userItem);
             login(userCurrent);
         } else {
             console.log(
@@ -53,11 +58,23 @@ function Profile() {
             setUser(JSON.parse(savedUser));
         }
     }, []);
-
+    useEffect(() => {
+        const fecthCommentByUser = async () => {
+            if (user && user.id) {
+                const response = await axios.get(
+                    `${baseUrl}/blog/get-comment-by-user/${user.id}`
+                );
+                setCommentByUser(response.data);
+            } else {
+                console.log("Thông tin người dùng chưa sẵn sàng");
+            }
+        };
+        fecthCommentByUser();
+    }, [user]);
     const handleLogout = async () => {
         try {
             const token = localStorage.getItem("token");
-            await axios.post("http://127.0.0.1:3005/auth/logout", null, {
+            await axios.post(`${baseUrl}/auth/logout`, null, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             logout();
@@ -92,30 +109,27 @@ function Profile() {
                                 </div>
                                 <div className="list-comment-mobile">
                                     <h3>Bình luận đã viết</h3>
-                                    <div className="comment-mobile">
-                                        <div>
-                                            <img
-                                                src={user.avatar}
-                                                alt="avatar"
-                                                className="avatar-user-comment-mobile"
-                                            ></img>
-                                        </div>
-                                        <div>
-                                            <em>"Hello bạn Đức Thanh"</em>
-                                        </div>
-                                    </div>
-                                    <div className="comment-mobile">
-                                        <div>
-                                            <img
-                                                src={user.avatar}
-                                                alt="avatar"
-                                                className="avatar-user-comment-mobile"
-                                            ></img>
-                                        </div>
-                                        <div>
-                                            <em>"Hello bạn Đức Thanh"</em>
-                                        </div>
-                                    </div>
+                                    {commentByUser?.map((item) => (
+                                        <Link
+                                            to={`/blog-detail/${item.MarkDownBlog.title}`}
+                                            className="comment-link-mobile"
+                                        >
+                                            <div className="comment-mobile">
+                                                <div>
+                                                    <img
+                                                        src={user.avatar}
+                                                        alt="avatar"
+                                                        className="avatar-user-comment-mobile"
+                                                    ></img>
+                                                </div>
+                                                <div>
+                                                    <em>
+                                                        "{item.commentText}"
+                                                    </em>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    ))}
                                 </div>
                                 <div className="btn-mobile">
                                     <button
@@ -149,30 +163,27 @@ function Profile() {
                                 </div>
                                 <div className="list-comment">
                                     <h3>Bình luận đã viết</h3>
-                                    <div className="comment">
-                                        <div>
-                                            <img
-                                                src={user.avatar}
-                                                alt="avatar"
-                                                className="avatar-user-comment"
-                                            ></img>
-                                        </div>
-                                        <div>
-                                            <em>"Hello bạn Đức Thanh"</em>
-                                        </div>
-                                    </div>
-                                    <div className="comment">
-                                        <div>
-                                            <img
-                                                src={user.avatar}
-                                                alt="avatar"
-                                                className="avatar-user-comment"
-                                            ></img>
-                                        </div>
-                                        <div>
-                                            <em>"Hello bạn Đức Thanh"</em>
-                                        </div>
-                                    </div>
+                                    {commentByUser?.map((item) => (
+                                        <Link
+                                            to={`/blog-detail/${item.MarkDownBlog.title}`}
+                                            className="comment-link"
+                                        >
+                                            <div className="comment">
+                                                <div>
+                                                    <img
+                                                        src={user.avatar}
+                                                        alt="avatar"
+                                                        className="avatar-user-comment"
+                                                    ></img>
+                                                </div>
+                                                <div>
+                                                    <em>
+                                                        "{item.commentText}"
+                                                    </em>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    ))}
                                 </div>
                                 <div className="btn">
                                     <button
@@ -189,6 +200,7 @@ function Profile() {
             ) : (
                 <LoginPage />
             )}
+            <ToastContainer />
         </div>
     );
 }

@@ -23,7 +23,7 @@
 .avatar-user-current {
     width: 100px;
     height: 100px;
-    border-radius: 20px;
+    border-radius: 50%;
     margin-right: 15px;
 }
 .info-user {
@@ -44,6 +44,9 @@
     background: transparent;
     border: solid 1px green;
     color: white;
+    &:hover {
+        background: green;
+    }
 }
 .list-comment {
     margin-top: 50px;
@@ -57,7 +60,7 @@
 .avatar-user-comment {
     width: 40px;
     height: 40px;
-    border-radius: 8px;
+    border-radius: 50%;
     margin-right: 10px;
 }
 /* Mobile */
@@ -68,7 +71,7 @@
 .avatar-user-current-mobile {
     width: 100px;
     height: 100px;
-    border-radius: 20px;
+    border-radius: 50%;
     margin-right: 15px;
 }
 .info-user-mobile {
@@ -106,6 +109,11 @@
 .avatar-user-comment-mobile {
     width: 40px;
     height: 40px;
-    border-radius: 8px;
+    border-radius: 50%;
     margin-right: 10px;
+}
+.comment-link-mobile,
+.comment-link {
+    text-decoration: none;
+    color: white;
 }

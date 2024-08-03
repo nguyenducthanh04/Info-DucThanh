@@ -94,11 +94,11 @@ function SideBar() {
                     <Link to={"/blog"} className="link-sidebar">
                         <div
                             className={`${
-                                activeSection === "interest"
+                                activeSection === "blog"
                                     ? "active-btn"
                                     : "interest-mobile"
                             }`}
-                            onClick={() => setActiveSection("interest")}
+                            onClick={() => setActiveSection("blog")}
                         >
                             <div className="icon-interest-mobile">
                                 <img

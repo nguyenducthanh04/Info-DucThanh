@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
+import { FaGoogle } from "react-icons/fa";
+import { baseUrl } from "../../api-url/base-url.js";
 import "./login.css";
 function Login() {
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -8,7 +10,7 @@ function Login() {
         setIsDarkMode((prevMode) => !prevMode);
     };
     const handleLogin = () => {
-        window.location.href = "http://127.0.0.1:3005/auth/google/redirect";
+        window.location.href = `${baseUrl}/auth/google/redirect`;
     };
     return (
         <div>
@@ -34,7 +36,7 @@ function Login() {
                         </div>
                         <div className="btn-login">
                             <button className="btn-login-google">
-                                Đăng nhập với Google
+                                <em>Đăng nhập với Google</em>
                             </button>
                         </div>
                     </div>
@@ -56,7 +58,8 @@ function Login() {
                                 className="btn-login-google"
                                 onClick={handleLogin}
                             >
-                                Đăng nhập với Google
+                                <FaGoogle className="icon-google" />
+                                <em>Đăng nhập với Google</em>
                             </button>
                         </div>
                     </div>

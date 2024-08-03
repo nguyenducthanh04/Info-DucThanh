@@ -4,6 +4,7 @@ import { useMediaQuery } from "react-responsive";
 import { FaEye } from "react-icons/fa";
 import moment from "moment";
 import axios from "axios";
+import { baseUrl } from "../../api-url/base-url.js";
 import "./blog.css";
 function Blog() {
     const [blogs, setBlogs] = useState([]);
@@ -13,7 +14,7 @@ function Blog() {
         const fecthDataBlog = async () => {
             try {
                 const response = await axios.get(
-                    "http://127.0.0.1:3005/blog/get-all-blog"
+                    `${baseUrl}/blog/get-all-blog`
                 );
                 setBlogs(response.data);
                 console.log(response.data);
@@ -40,7 +41,11 @@ function Blog() {
                         <div className="my-blog-mobile">
                             <div className="blog-content-mobile">
                                 {blogs?.map((blog) => (
-                                    <Link to={"/blog"} className="link-blog">
+                                    <Link
+                                        to={`/blog-detail/${blog.title}`}
+                                        className="link-blog"
+                                        key={blog.id}
+                                    >
                                         <div
                                             className={`${
                                                 isDarkMode

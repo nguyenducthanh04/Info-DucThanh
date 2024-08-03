@@ -116,13 +116,27 @@ function Header() {
                                     </div>
                                 )}
                                 <Link to={"/profile"}>
-                                    <div className="icon-mobile-last">
+                                    {/* <div className="icon-mobile-last">
                                         <img
                                             src={accountIcon}
                                             className="icon-account-mobile"
                                             alt="tiktok"
                                         ></img>
-                                    </div>
+                                    </div> */}
+                                    {userData ? (
+                                        <img
+                                            src={userData.avatar}
+                                            className="avatar-user"
+                                        ></img>
+                                    ) : (
+                                        <div className="icon-mobile-last">
+                                            <img
+                                                src={accountIcon}
+                                                className="icon-account-mobile"
+                                                alt="tiktok"
+                                            ></img>
+                                        </div>
+                                    )}
                                 </Link>
                             </div>
                             <div className="info-text-mobile">

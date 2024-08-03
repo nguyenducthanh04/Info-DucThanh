@@ -5,6 +5,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { FaCheckCircle } from "react-icons/fa";
 import { animateScroll as scroll } from "react-scroll";
 import "react-toastify/dist/ReactToastify.css";
+import { baseUrl } from "../../api-url/base-url.js";
 import "./blog-detail.css";
 import axios from "axios";
 function BlogDetail() {
@@ -35,7 +36,7 @@ function BlogDetail() {
                 hasFetched.current = true;
                 console.log("Fetching blog data...");
                 await axios.post(
-                    `http://127.0.0.1:3005/blog/increment-view/${title}`,
+                    `${baseUrl}/blog/increment-view/${title}`,
                     {},
                     {
                         headers: {
@@ -45,13 +46,14 @@ function BlogDetail() {
                 );
 
                 const response = await axios.get(
-                    `http://127.0.0.1:3005/blog/get-blog/${title}`
+                    `${baseUrl}/blog/get-blog/${title}`
                 );
                 setBlogDataDetail(response.data);
                 setBlogDataLoaded(true);
             }
         } catch (error) {
             console.error("Error fetching blog data:", error);
+            toast.error("Có lỗi xảy ra, vui lòng chờ tôi fix bug.");
         }
     };
 
@@ -61,22 +63,24 @@ function BlogDetail() {
     const fetchComments = async () => {
         try {
             const response = await axios.get(
-                `http://127.0.0.1:3005/blog/get-all-comment/${blogDataDetail.id}`
+                `${baseUrl}/blog/get-all-comment/${blogDataDetail.id}`
             );
             setComments(response.data);
             console.log("i:", response.data);
         } catch (error) {
             console.error("Error fetching comments:", error);
+            toast.error("Có lỗi xảy ra, vui lòng chờ tôi fix bug.");
         }
     };
     const fetchCommentChild = async () => {
         try {
             const response = await axios.get(
-                `http://127.0.0.1:3005/blog/get-comment-child/${blogDataDetail.id}`
+                `${baseUrl}/blog/get-comment-child/${blogDataDetail.id}`
             );
             setCommentChild(response.data);
         } catch (error) {
             console.error("Error fetching comments:", error);
+            toast.error("Có lỗi xảy ra, vui lòng chờ tôi fix bug.");
         }
     };
     useEffect(() => {
@@ -107,16 +111,42 @@ function BlogDetail() {
     const undoEdit = () => {
         setIsEditing(false);
     };
-    const handleEditClick = (comment) => {
+    const handleEditClick = (req) => {
         setIsEditing(true);
-        setEditedContent(comment.commentText);
-        setCurrentCommentId(comment.id);
+        setEditedContent(req.commentText);
+        setCurrentCommentId(req.id);
     };
     const handleReplyClick = (username, commentId) => {
         setReplyTo(`@${username} `);
         setInputValue(`@${username} `);
         setIdComment(commentId);
         handleRocket();
+    };
+    const handleDeleteComment = async (commentId) => {
+        try {
+            const confirmed = window.confirm(
+                "Bạn có chắc chắn muốn xóa bình luận này?"
+            );
+            if (!confirmed) {
+                return;
+            }
+            await axios.delete(`${baseUrl}/blog/delete-comment`, {
+                data: {
+                    commentId,
+                },
+            });
+            await fetchComments();
+            await fetchCommentChild();
+            toast.success("Xóa bình lụân thành công.", {
+                icon: <FaCheckCircle style={{ color: "green" }} />,
+            });
+        } catch (error) {
+            console.error(
+                "An error occurred while deleting the comment:",
+                error
+            );
+            toast.error("Có lỗi xảy ra, vui lòng chờ tôi fix bug.");
+        }
     };
     const handleInputChange = (event) => {
         setInputValue(event.target.value);
@@ -125,22 +155,19 @@ function BlogDetail() {
         e.preventDefault();
 
         try {
-            const response = await axios.post(
-                "http://127.0.0.1:3005/blog/add-comment",
-                {
-                    blogId: blogDataDetail.id,
-                    userId: userParse.id,
-                    commentText: inputValue,
-                    parentCommentId: 0,
-                }
-            );
+            const response = await axios.post(`${baseUrl}/blog/add-comment`, {
+                blogId: blogDataDetail.id,
+                userId: userParse.id,
+                commentText: inputValue,
+                parentCommentId: 0,
+            });
             await fetchComments();
             toast.success("Bình lụân thành công.", {
                 icon: <FaCheckCircle style={{ color: "green" }} />,
             });
             setInputValue("");
         } catch (error) {
-            toast.error("Có lỗi xảy ra, vui lòng fix bug.");
+            toast.error("Có lỗi xảy ra, vui lòng chờ tôi fix bug.");
             console.error("Error adding comment:", error);
         }
     };
@@ -148,40 +175,43 @@ function BlogDetail() {
         e.preventDefault();
 
         try {
-            const response = await axios.post(
-                "http://127.0.0.1:3005/blog/rep-comment",
-                {
-                    blogId: blogDataDetail.id,
-                    userId: userParse.id,
-                    commentText: inputValue,
-                    parentCommentId: IdComment,
-                }
-            );
+            const response = await axios.post(`${baseUrl}/blog/rep-comment`, {
+                blogId: blogDataDetail.id,
+                userId: userParse.id,
+                commentText: inputValue,
+                parentCommentId: IdComment,
+            });
 
             await fetchCommentChild();
-            toast.success("Bình lụân thành công.", {
+            toast.success("Trả lời bình lụân thành công.", {
                 icon: <FaCheckCircle style={{ color: "green" }} />,
             });
 
             setInputValue("");
         } catch (error) {
-            toast.error("Có lỗi xảy ra, vui lòng fix bug.");
+            toast.error("Có lỗi xảy ra, vui lòng chờ fix bug.");
             console.error("Error adding comment:", error);
         }
     };
     const handleSaveEdit = async () => {
         try {
-            await axios.put("http://127.0.0.1:3005/blog/edit-comment", {
+            await axios.put(`${baseUrl}/blog/edit-comment`, {
                 commentId: currentCommentId,
                 content: editedContent,
             });
             // Update the comments state with the edited comment
-
+            await fetchComments();
+            await fetchCommentChild();
             setIsEditing(false);
+            toast.success("Cập nhật bình luận thành công.", {
+                icon: <FaCheckCircle style={{ color: "green" }} />,
+            });
         } catch (error) {
+            toast.error("Có lỗi xảy ra, vui lòng chờ tôi fix bug.");
             console.error("Error editing comment:", error);
         }
     };
+
     return (
         <div>
             {isMobile ? (
@@ -280,24 +310,46 @@ function BlogDetail() {
                                                             "flex-end",
                                                     }}
                                                 >
-                                                    <span
-                                                        style={{
-                                                            color: "red",
-                                                            marginRight: "10px",
-                                                            cursor: "pointer",
-                                                        }}
-                                                    >
-                                                        Xóa
-                                                    </span>
-                                                    <span
-                                                        style={{
-                                                            color: "yellow",
-                                                            marginRight: "10px",
-                                                            cursor: "pointer",
-                                                        }}
-                                                    >
-                                                        Sửa
-                                                    </span>
+                                                    {parseInt(
+                                                        comment.User.id
+                                                    ) ===
+                                                    parseInt(userParse.id) ? (
+                                                        <div>
+                                                            <span
+                                                                style={{
+                                                                    color: "red",
+                                                                    marginRight:
+                                                                        "10px",
+                                                                    cursor: "pointer",
+                                                                }}
+                                                                onClick={() =>
+                                                                    handleDeleteComment(
+                                                                        comment.id
+                                                                    )
+                                                                }
+                                                            >
+                                                                Xóa
+                                                            </span>
+                                                            <span
+                                                                style={{
+                                                                    color: "yellow",
+                                                                    marginRight:
+                                                                        "10px",
+                                                                    cursor: "pointer",
+                                                                }}
+                                                                onClick={() =>
+                                                                    handleEditClick(
+                                                                        comment
+                                                                    )
+                                                                }
+                                                            >
+                                                                Sửa
+                                                            </span>
+                                                        </div>
+                                                    ) : (
+                                                        ""
+                                                    )}
+
                                                     <span
                                                         style={{
                                                             color: "green",
@@ -361,26 +413,49 @@ function BlogDetail() {
                                                                     "flex-end",
                                                             }}
                                                         >
-                                                            <span
-                                                                style={{
-                                                                    color: "red",
-                                                                    marginRight:
-                                                                        "10px",
-                                                                    cursor: "pointer",
-                                                                }}
-                                                            >
-                                                                Xóa
-                                                            </span>
-                                                            <span
-                                                                style={{
-                                                                    color: "yellow",
-                                                                    marginRight:
-                                                                        "10px",
-                                                                    cursor: "pointer",
-                                                                }}
-                                                            >
-                                                                Sửa
-                                                            </span>
+                                                            {parseInt(
+                                                                commentChildItem
+                                                                    .User.id
+                                                            ) ===
+                                                            parseInt(
+                                                                userParse.id
+                                                            ) ? (
+                                                                <div>
+                                                                    <span
+                                                                        style={{
+                                                                            color: "red",
+                                                                            marginRight:
+                                                                                "10px",
+                                                                            cursor: "pointer",
+                                                                        }}
+                                                                        onClick={() =>
+                                                                            handleDeleteComment(
+                                                                                commentChildItem.id
+                                                                            )
+                                                                        }
+                                                                    >
+                                                                        Xóa
+                                                                    </span>
+                                                                    <span
+                                                                        style={{
+                                                                            color: "yellow",
+                                                                            marginRight:
+                                                                                "10px",
+                                                                            cursor: "pointer",
+                                                                        }}
+                                                                        onClick={() =>
+                                                                            handleEditClick(
+                                                                                commentChildItem
+                                                                            )
+                                                                        }
+                                                                    >
+                                                                        Sửa
+                                                                    </span>
+                                                                </div>
+                                                            ) : (
+                                                                ""
+                                                            )}
+
                                                             <span
                                                                 style={{
                                                                     color: "green",
@@ -405,44 +480,53 @@ function BlogDetail() {
                                 ))}
                             </div>
                         </div>
-                        <div
-                            style={{
-                                display: "flex",
-                                position: "fixed",
-                                bottom: "100px",
-                            }}
-                        >
-                            <div className="avatar-user-mobile">
-                                <img src={userParse.avatar}></img>
-                            </div>
-                            <div className="comment-input-mobile">
-                                <div
-                                    className="input-wrapper-mobile-edit"
-                                    ref={replyInputRef}
-                                >
-                                    <textarea
-                                        placeholder="Nhập bình luận của bạn..."
-                                        value={inputValue}
-                                        onChange={handleInputChange}
-                                    ></textarea>
-                                    {isReplying === true ? (
+                        {isEditing ? (
+                            <div
+                                style={{
+                                    display: "flex",
+                                    position: "fixed",
+                                    bottom: "100px",
+                                    marginLeft: "-20px",
+                                }}
+                            >
+                                <div className="avatar-user-mobile">
+                                    <img src={userParse.avatar}></img>
+                                </div>
+                                <div className="comment-input-mobile">
+                                    <div
+                                        className="input-wrapper-mobile-edit"
+                                        ref={replyInputRef}
+                                    >
+                                        <textarea
+                                            placeholder="Nhập bình luận của bạn..."
+                                            id="comment-input"
+                                            value={editedContent}
+                                            onChange={(e) =>
+                                                setEditedContent(e.target.value)
+                                            }
+                                            ref={commentInputRef}
+                                        ></textarea>
+
                                         <button
                                             className="btn-comment-mobile-edit"
-                                            onClick={handleSubmitCommentChild}
-                                        >
-                                            Trả lời
-                                        </button>
-                                    ) : (
-                                        <button
-                                            className="btn-comment-mobile-edit"
-                                            onClick={handleSubmit}
+                                            onClick={handleSaveEdit}
                                         >
                                             Cập nhật
                                         </button>
-                                    )}
+                                    </div>
+                                </div>
+                                <div>
+                                    <button
+                                        className="btn-undo"
+                                        onClick={undoEdit}
+                                    >
+                                        Huỷ
+                                    </button>
                                 </div>
                             </div>
-                        </div>
+                        ) : (
+                            ""
+                        )}
                         <div style={{ width: "100%", height: "50px" }}></div>
                     </div>
                 </div>
@@ -536,27 +620,43 @@ function BlogDetail() {
                                                     justifyContent: "flex-end",
                                                 }}
                                             >
-                                                <span
-                                                    style={{
-                                                        color: "red",
-                                                        marginRight: "10px",
-                                                        cursor: "pointer",
-                                                    }}
-                                                >
-                                                    Xóa
-                                                </span>
-                                                <span
-                                                    style={{
-                                                        color: "yellow",
-                                                        marginRight: "10px",
-                                                        cursor: "pointer",
-                                                    }}
-                                                    onClick={() =>
-                                                        handleEditClick(comment)
-                                                    }
-                                                >
-                                                    Sửa
-                                                </span>
+                                                {parseInt(comment.User.id) ===
+                                                parseInt(userParse.id) ? (
+                                                    <div>
+                                                        <span
+                                                            style={{
+                                                                color: "red",
+                                                                marginRight:
+                                                                    "10px",
+                                                                cursor: "pointer",
+                                                            }}
+                                                            onClick={() =>
+                                                                handleDeleteComment(
+                                                                    comment.id
+                                                                )
+                                                            }
+                                                        >
+                                                            Xóa
+                                                        </span>
+                                                        <span
+                                                            style={{
+                                                                color: "yellow",
+                                                                marginRight:
+                                                                    "10px",
+                                                                cursor: "pointer",
+                                                            }}
+                                                            onClick={() =>
+                                                                handleEditClick(
+                                                                    comment
+                                                                )
+                                                            }
+                                                        >
+                                                            Sửa
+                                                        </span>
+                                                    </div>
+                                                ) : (
+                                                    ""
+                                                )}
                                                 <span
                                                     style={{
                                                         color: "green",
@@ -580,6 +680,7 @@ function BlogDetail() {
                                             style={{
                                                 display: "flex",
                                                 position: "fixed",
+                                                marginLeft: "-20px",
                                                 bottom: "0",
                                             }}
                                         >
@@ -671,31 +772,52 @@ function BlogDetail() {
                                                                 "flex-end",
                                                         }}
                                                     >
-                                                        <span
-                                                            style={{
-                                                                color: "red",
-                                                                marginRight:
-                                                                    "10px",
-                                                                cursor: "pointer",
-                                                            }}
-                                                        >
-                                                            Xóa
-                                                        </span>
-                                                        <span
-                                                            style={{
-                                                                color: "yellow",
-                                                                marginRight:
-                                                                    "10px",
-                                                                cursor: "pointer",
-                                                            }}
-                                                            onClick={() =>
-                                                                handleEditClick(
-                                                                    commentChildItem.commentText
-                                                                )
-                                                            }
-                                                        >
-                                                            Sửa
-                                                        </span>
+                                                        {parseInt(
+                                                            commentChildItem
+                                                                .User.id
+                                                        ) ===
+                                                        parseInt(
+                                                            userParse.id
+                                                        ) ? (
+                                                            <div>
+                                                                <span
+                                                                    style={{
+                                                                        color: "red",
+                                                                        marginRight:
+                                                                            "10px",
+                                                                        cursor: "pointer",
+                                                                        display:
+                                                                            "inline-block",
+                                                                    }}
+                                                                    onClick={() =>
+                                                                        handleDeleteComment(
+                                                                            commentChildItem.id
+                                                                        )
+                                                                    }
+                                                                >
+                                                                    Xóa
+                                                                </span>
+                                                                <span
+                                                                    style={{
+                                                                        color: "yellow",
+                                                                        marginRight:
+                                                                            "10px",
+                                                                        cursor: "pointer",
+                                                                        display:
+                                                                            "inline-block",
+                                                                    }}
+                                                                    onClick={() =>
+                                                                        handleEditClick(
+                                                                            commentChildItem
+                                                                        )
+                                                                    }
+                                                                >
+                                                                    Sửa
+                                                                </span>
+                                                            </div>
+                                                        ) : (
+                                                            ""
+                                                        )}
                                                         <span
                                                             style={{
                                                                 color: "green",
