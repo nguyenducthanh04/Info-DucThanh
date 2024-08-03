@@ -143,7 +143,7 @@ function SendMail() {
                                                                         className="form-button"
                                                                         type="submit"
                                                                     >
-                                                                        SEND
+                                                                        Gửi
                                                                     </button>
                                                                 </div>
                                                             </form>
@@ -252,7 +252,7 @@ function SendMail() {
                                                                         className="form-button"
                                                                         type="submit"
                                                                     >
-                                                                        SEND
+                                                                        Gửi
                                                                     </button>
                                                                 </div>
                                                             </form>
