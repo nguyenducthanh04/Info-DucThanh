@@ -203,7 +203,6 @@ function BlogDetail() {
                 commentId: currentCommentId,
                 content: editedContent,
             });
-            // Update the comments state with the edited comment
             await fetchComments();
             await fetchCommentChild();
             setIsEditing(false);
