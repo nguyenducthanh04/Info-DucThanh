@@ -288,191 +288,84 @@ function BlogDetail() {
                                 <h3>Bình luận</h3>
                             </div>
                             <div className="table-comment-mobile">
-                                {comments?.map((comment) => (
-                                    <React.Fragment key={comment.id}>
-                                        <div className="comment-item-mobile">
-                                            <div className="avatar-user-comment-item-mobile">
-                                                <img
-                                                    src={comment.User.avatar}
-                                                    alt="avatar"
-                                                ></img>
-                                            </div>
-                                            <div>
-                                                <h4
-                                                    style={{
-                                                        marginBottom: "8px",
-                                                    }}
-                                                >
-                                                    {comment.User.username}
-                                                </h4>
-                                                <em>"{comment.commentText}"</em>
-                                                <div
-                                                    style={{
-                                                        width: "60vw",
-                                                        display: "flex",
-                                                        justifyContent:
-                                                            "flex-end",
-                                                    }}
-                                                >
-                                                    {comment &&
-                                                    comment.User &&
-                                                    comment.User.id &&
-                                                    userParse &&
-                                                    userParse.id &&
-                                                    parseInt(
-                                                        comment.User.id
-                                                    ) ===
-                                                        parseInt(
-                                                            userParse.id
-                                                        ) ? (
-                                                        <div>
-                                                            <span
-                                                                style={{
-                                                                    color: "red",
-                                                                    marginRight:
-                                                                        "10px",
-                                                                    cursor: "pointer",
-                                                                }}
-                                                                onClick={() =>
-                                                                    handleDeleteComment(
-                                                                        comment.id
-                                                                    )
-                                                                }
-                                                            >
-                                                                Xóa
-                                                            </span>
-                                                            <span
-                                                                style={{
-                                                                    color: "yellow",
-                                                                    marginRight:
-                                                                        "10px",
-                                                                    cursor: "pointer",
-                                                                }}
-                                                                onClick={() =>
-                                                                    handleEditClick(
-                                                                        comment
-                                                                    )
-                                                                }
-                                                            >
-                                                                Sửa
-                                                            </span>
-                                                        </div>
-                                                    ) : (
-                                                        ""
-                                                    )}
-
-                                                    <span
-                                                        style={{
-                                                            color: "green",
-                                                            cursor: "pointer",
-                                                        }}
-                                                        onClick={() =>
-                                                            handleReplyClick(
-                                                                comment.User
-                                                                    .username,
-                                                                comment.id
-                                                            )
+                                {comments && comments.length > 0 ? (
+                                    comments?.map((comment) => (
+                                        <React.Fragment key={comment.id}>
+                                            <div className="comment-item-mobile">
+                                                <div className="avatar-user-comment-item-mobile">
+                                                    <img
+                                                        src={
+                                                            comment.User.avatar
                                                         }
-                                                    >
-                                                        Trả lời
-                                                    </span>
+                                                        alt="avatar"
+                                                    ></img>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        {commentChild
-                                            ?.filter(
-                                                (commentChildItem) =>
-                                                    commentChildItem.parentCommentId ===
-                                                    comment.id
-                                            )
-                                            .map((commentChildItem) => (
-                                                <div className="comment-item-child-mobile">
-                                                    <div className="avatar-user-comment-item-mobile">
-                                                        <img
-                                                            src={
-                                                                commentChildItem
-                                                                    .User.avatar
-                                                            }
-                                                            alt="avatar"
-                                                        ></img>
-                                                    </div>
-                                                    <div>
-                                                        <h4
-                                                            style={{
-                                                                marginBottom:
-                                                                    "8px",
-                                                            }}
-                                                        >
-                                                            {
-                                                                commentChildItem
-                                                                    .User
-                                                                    .username
-                                                            }
-                                                        </h4>
-                                                        <em>
-                                                            "
-                                                            {
-                                                                commentChildItem.commentText
-                                                            }
-                                                            "
-                                                        </em>
-                                                        <div
-                                                            style={{
-                                                                width: "50vw",
-                                                                display: "flex",
-                                                                justifyContent:
-                                                                    "flex-end",
-                                                            }}
-                                                        >
-                                                            {commentChildItem &&
-                                                            commentChildItem.User &&
-                                                            commentChildItem
-                                                                .User.id &&
-                                                            userParse &&
-                                                            userParse.id &&
+                                                <div>
+                                                    <h4
+                                                        style={{
+                                                            marginBottom: "8px",
+                                                        }}
+                                                    >
+                                                        {comment.User.username}
+                                                    </h4>
+                                                    <em>
+                                                        "{comment.commentText}"
+                                                    </em>
+                                                    <div
+                                                        style={{
+                                                            width: "60vw",
+                                                            display: "flex",
+                                                            justifyContent:
+                                                                "flex-end",
+                                                        }}
+                                                    >
+                                                        {comment &&
+                                                        comment.User &&
+                                                        comment.User.id &&
+                                                        userParse &&
+                                                        userParse.id &&
+                                                        parseInt(
+                                                            comment.User.id
+                                                        ) ===
                                                             parseInt(
-                                                                commentChildItem
-                                                                    .User.id
-                                                            ) ===
-                                                                parseInt(
-                                                                    userParse.id
-                                                                ) ? (
-                                                                <div>
-                                                                    <span
-                                                                        style={{
-                                                                            color: "red",
-                                                                            marginRight:
-                                                                                "10px",
-                                                                            cursor: "pointer",
-                                                                        }}
-                                                                        onClick={() =>
-                                                                            handleDeleteComment(
-                                                                                commentChildItem.id
-                                                                            )
-                                                                        }
-                                                                    >
-                                                                        Xóa
-                                                                    </span>
-                                                                    <span
-                                                                        style={{
-                                                                            color: "yellow",
-                                                                            marginRight:
-                                                                                "10px",
-                                                                            cursor: "pointer",
-                                                                        }}
-                                                                        onClick={() =>
-                                                                            handleEditClick(
-                                                                                commentChildItem
-                                                                            )
-                                                                        }
-                                                                    >
-                                                                        Sửa
-                                                                    </span>
-                                                                </div>
-                                                            ) : (
-                                                                ""
-                                                            )}
-
+                                                                userParse.id
+                                                            ) ? (
+                                                            <div>
+                                                                <span
+                                                                    style={{
+                                                                        color: "red",
+                                                                        marginRight:
+                                                                            "10px",
+                                                                        cursor: "pointer",
+                                                                    }}
+                                                                    onClick={() =>
+                                                                        handleDeleteComment(
+                                                                            comment.id
+                                                                        )
+                                                                    }
+                                                                >
+                                                                    Xóa
+                                                                </span>
+                                                                <span
+                                                                    style={{
+                                                                        color: "yellow",
+                                                                        marginRight:
+                                                                            "10px",
+                                                                        cursor: "pointer",
+                                                                    }}
+                                                                    onClick={() =>
+                                                                        handleEditClick(
+                                                                            comment
+                                                                        )
+                                                                    }
+                                                                >
+                                                                    Sửa
+                                                                </span>
+                                                            </div>
+                                                        ) : (
+                                                            ""
+                                                        )}
+                                                        {token ? (
                                                             <span
                                                                 style={{
                                                                     color: "green",
@@ -480,7 +373,7 @@ function BlogDetail() {
                                                                 }}
                                                                 onClick={() =>
                                                                     handleReplyClick(
-                                                                        commentChildItem
+                                                                        comment
                                                                             .User
                                                                             .username,
                                                                         comment.id
@@ -489,12 +382,145 @@ function BlogDetail() {
                                                             >
                                                                 Trả lời
                                                             </span>
-                                                        </div>
+                                                        ) : (
+                                                            ""
+                                                        )}
                                                     </div>
                                                 </div>
-                                            ))}
-                                    </React.Fragment>
-                                ))}
+                                            </div>
+                                            {commentChild
+                                                ?.filter(
+                                                    (commentChildItem) =>
+                                                        commentChildItem.parentCommentId ===
+                                                        comment.id
+                                                )
+                                                .map((commentChildItem) => (
+                                                    <div className="comment-item-child-mobile">
+                                                        <div className="avatar-user-comment-item-mobile">
+                                                            <img
+                                                                src={
+                                                                    commentChildItem
+                                                                        .User
+                                                                        .avatar
+                                                                }
+                                                                alt="avatar"
+                                                            ></img>
+                                                        </div>
+                                                        <div>
+                                                            <h4
+                                                                style={{
+                                                                    marginBottom:
+                                                                        "8px",
+                                                                }}
+                                                            >
+                                                                {
+                                                                    commentChildItem
+                                                                        .User
+                                                                        .username
+                                                                }
+                                                            </h4>
+                                                            <em>
+                                                                "
+                                                                {
+                                                                    commentChildItem.commentText
+                                                                }
+                                                                "
+                                                            </em>
+                                                            <div
+                                                                style={{
+                                                                    width: "50vw",
+                                                                    display:
+                                                                        "flex",
+                                                                    justifyContent:
+                                                                        "flex-end",
+                                                                }}
+                                                            >
+                                                                {commentChildItem &&
+                                                                commentChildItem.User &&
+                                                                commentChildItem
+                                                                    .User.id &&
+                                                                userParse &&
+                                                                userParse.id &&
+                                                                parseInt(
+                                                                    commentChildItem
+                                                                        .User.id
+                                                                ) ===
+                                                                    parseInt(
+                                                                        userParse.id
+                                                                    ) ? (
+                                                                    <div>
+                                                                        <span
+                                                                            style={{
+                                                                                color: "red",
+                                                                                marginRight:
+                                                                                    "10px",
+                                                                                cursor: "pointer",
+                                                                            }}
+                                                                            onClick={() =>
+                                                                                handleDeleteComment(
+                                                                                    commentChildItem.id
+                                                                                )
+                                                                            }
+                                                                        >
+                                                                            Xóa
+                                                                        </span>
+                                                                        <span
+                                                                            style={{
+                                                                                color: "yellow",
+                                                                                marginRight:
+                                                                                    "10px",
+                                                                                cursor: "pointer",
+                                                                            }}
+                                                                            onClick={() =>
+                                                                                handleEditClick(
+                                                                                    commentChildItem
+                                                                                )
+                                                                            }
+                                                                        >
+                                                                            Sửa
+                                                                        </span>
+                                                                    </div>
+                                                                ) : (
+                                                                    ""
+                                                                )}
+                                                                {token ? (
+                                                                    <span
+                                                                        style={{
+                                                                            color: "green",
+                                                                            cursor: "pointer",
+                                                                        }}
+                                                                        onClick={() =>
+                                                                            handleReplyClick(
+                                                                                commentChildItem
+                                                                                    .User
+                                                                                    .username,
+                                                                                comment.id
+                                                                            )
+                                                                        }
+                                                                    >
+                                                                        Trả lời
+                                                                    </span>
+                                                                ) : (
+                                                                    ""
+                                                                )}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                        </React.Fragment>
+                                    ))
+                                ) : (
+                                    <div
+                                        style={{
+                                            width: "100%",
+                                            textAlign: "center",
+                                        }}
+                                    >
+                                        <em style={{ color: "green" }}>
+                                            Chưa có bình luận nào
+                                        </em>
+                                    </div>
+                                )}
                             </div>
                         </div>
                         {isEditing ? (
@@ -615,237 +641,81 @@ function BlogDetail() {
                             <h3>Bình luận</h3>
                         </div>
                         <div className="table-comment">
-                            {comments?.map((comment) => (
-                                <React.Fragment key={comment.id}>
-                                    <div className="comment-item">
-                                        <div>
-                                            <img
-                                                src={comment.User.avatar}
-                                                alt="avatar"
-                                                className="avatar-user-comment-item"
-                                            />
-                                        </div>
-                                        <div>
-                                            <h4 style={{ marginBottom: "8px" }}>
-                                                {comment.User.username}
-                                            </h4>
-                                            <em>"{comment.commentText}"</em>
-                                            <div
-                                                style={{
-                                                    width: "43vw",
-                                                    display: "flex",
-                                                    justifyContent: "flex-end",
-                                                }}
-                                            >
-                                                {comment &&
-                                                comment.User &&
-                                                comment.User.id &&
-                                                userParse &&
-                                                userParse.id &&
-                                                parseInt(comment.User.id) ===
-                                                    parseInt(userParse.id) ? (
-                                                    <div>
-                                                        <span
-                                                            style={{
-                                                                color: "red",
-                                                                marginRight:
-                                                                    "10px",
-                                                                cursor: "pointer",
-                                                            }}
-                                                            onClick={() =>
-                                                                handleDeleteComment(
-                                                                    comment.id
-                                                                )
-                                                            }
-                                                        >
-                                                            Xóa
-                                                        </span>
-                                                        <span
-                                                            style={{
-                                                                color: "yellow",
-                                                                marginRight:
-                                                                    "10px",
-                                                                cursor: "pointer",
-                                                            }}
-                                                            onClick={() =>
-                                                                handleEditClick(
-                                                                    comment
-                                                                )
-                                                            }
-                                                        >
-                                                            Sửa
-                                                        </span>
-                                                    </div>
-                                                ) : (
-                                                    ""
-                                                )}
-                                                <span
-                                                    style={{
-                                                        color: "green",
-                                                        cursor: "pointer",
-                                                    }}
-                                                    onClick={() =>
-                                                        handleReplyClick(
-                                                            comment.User
-                                                                .username,
-                                                            comment.id
-                                                        )
-                                                    }
-                                                >
-                                                    Trả lời
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {isEditing ? (
-                                        <div
-                                            style={{
-                                                display: "flex",
-                                                position: "fixed",
-                                                marginLeft: "-20px",
-                                                bottom: "0",
-                                            }}
-                                        >
-                                            <div className="avatar-user">
+                            {comments && comments.length > 0 ? (
+                                comments?.map((comment) => (
+                                    <React.Fragment key={comment.id}>
+                                        <div className="comment-item">
+                                            <div>
                                                 <img
-                                                    src={userParse.avatar}
-                                                ></img>
-                                            </div>
-                                            <div className="comment-input">
-                                                <div
-                                                    className="input-wrapper"
-                                                    ref={replyInputRef}
-                                                >
-                                                    <textarea
-                                                        id="comment-input"
-                                                        value={editedContent}
-                                                        onChange={(e) =>
-                                                            setEditedContent(
-                                                                e.target.value
-                                                            )
-                                                        }
-                                                        ref={commentInputRef}
-                                                    ></textarea>
-
-                                                    <button
-                                                        className="btn-comment"
-                                                        onClick={handleSaveEdit}
-                                                    >
-                                                        Cập nhật
-                                                    </button>
-                                                </div>
+                                                    src={comment.User.avatar}
+                                                    alt="avatar"
+                                                    className="avatar-user-comment-item"
+                                                />
                                             </div>
                                             <div>
-                                                <button
-                                                    className="btn-undo"
-                                                    onClick={undoEdit}
+                                                <h4
+                                                    style={{
+                                                        marginBottom: "8px",
+                                                    }}
                                                 >
-                                                    Huỷ
-                                                </button>
-                                            </div>
-                                        </div>
-                                    ) : (
-                                        ""
-                                    )}
-                                    {commentChild
-                                        ?.filter(
-                                            (commentChildItem) =>
-                                                commentChildItem.parentCommentId ===
-                                                comment.id
-                                        )
-                                        .map((commentChildItem) => (
-                                            <div
-                                                key={commentChildItem.id}
-                                                className="comment-item-child"
-                                            >
-                                                <div>
-                                                    <img
-                                                        src={
-                                                            commentChildItem
-                                                                .User.avatar
-                                                        }
-                                                        alt="avatar"
-                                                        className="avatar-user-comment-item"
-                                                    />
-                                                </div>
-                                                <div>
-                                                    <h4
-                                                        style={{
-                                                            marginBottom: "8px",
-                                                        }}
-                                                    >
-                                                        {
-                                                            commentChildItem
-                                                                .User.username
-                                                        }
-                                                    </h4>
-                                                    <em>
-                                                        "
-                                                        {
-                                                            commentChildItem.commentText
-                                                        }
-                                                        "
-                                                    </em>
-                                                    <div
-                                                        style={{
-                                                            width: "41vw",
-                                                            display: "flex",
-                                                            justifyContent:
-                                                                "flex-end",
-                                                        }}
-                                                    >
-                                                        {commentChildItem &&
-                                                        commentChildItem.User &&
-                                                        commentChildItem.User
-                                                            .id &&
-                                                        userParse &&
-                                                        userParse.id &&
+                                                    {comment.User.username}
+                                                </h4>
+                                                <em>"{comment.commentText}"</em>
+                                                <div
+                                                    style={{
+                                                        width: "43vw",
+                                                        display: "flex",
+                                                        justifyContent:
+                                                            "flex-end",
+                                                    }}
+                                                >
+                                                    {comment &&
+                                                    comment.User &&
+                                                    comment.User.id &&
+                                                    userParse &&
+                                                    userParse.id &&
+                                                    parseInt(
+                                                        comment.User.id
+                                                    ) ===
                                                         parseInt(
-                                                            commentChildItem
-                                                                .User.id
-                                                        ) ===
-                                                            parseInt(
-                                                                userParse.id
-                                                            ) ? (
-                                                            <div>
-                                                                <span
-                                                                    style={{
-                                                                        color: "red",
-                                                                        marginRight:
-                                                                            "10px",
-                                                                        cursor: "pointer",
-                                                                        display:
-                                                                            "inline-block",
-                                                                    }}
-                                                                    onClick={() =>
-                                                                        handleDeleteComment(
-                                                                            commentChildItem.id
-                                                                        )
-                                                                    }
-                                                                >
-                                                                    Xóa
-                                                                </span>
-                                                                <span
-                                                                    style={{
-                                                                        color: "yellow",
-                                                                        marginRight:
-                                                                            "10px",
-                                                                        cursor: "pointer",
-                                                                        display:
-                                                                            "inline-block",
-                                                                    }}
-                                                                    onClick={() =>
-                                                                        handleEditClick(
-                                                                            commentChildItem
-                                                                        )
-                                                                    }
-                                                                >
-                                                                    Sửa
-                                                                </span>
-                                                            </div>
-                                                        ) : (
-                                                            ""
-                                                        )}
+                                                            userParse.id
+                                                        ) ? (
+                                                        <div>
+                                                            <span
+                                                                style={{
+                                                                    color: "red",
+                                                                    marginRight:
+                                                                        "10px",
+                                                                    cursor: "pointer",
+                                                                }}
+                                                                onClick={() =>
+                                                                    handleDeleteComment(
+                                                                        comment.id
+                                                                    )
+                                                                }
+                                                            >
+                                                                Xóa
+                                                            </span>
+                                                            <span
+                                                                style={{
+                                                                    color: "yellow",
+                                                                    marginRight:
+                                                                        "10px",
+                                                                    cursor: "pointer",
+                                                                }}
+                                                                onClick={() =>
+                                                                    handleEditClick(
+                                                                        comment
+                                                                    )
+                                                                }
+                                                            >
+                                                                Sửa
+                                                            </span>
+                                                        </div>
+                                                    ) : (
+                                                        ""
+                                                    )}
+                                                    {token ? (
                                                         <span
                                                             style={{
                                                                 color: "green",
@@ -853,8 +723,7 @@ function BlogDetail() {
                                                             }}
                                                             onClick={() =>
                                                                 handleReplyClick(
-                                                                    commentChildItem
-                                                                        .User
+                                                                    comment.User
                                                                         .username,
                                                                     comment.id
                                                                 )
@@ -862,12 +731,208 @@ function BlogDetail() {
                                                         >
                                                             Trả lời
                                                         </span>
-                                                    </div>
+                                                    ) : (
+                                                        ""
+                                                    )}
                                                 </div>
                                             </div>
-                                        ))}
-                                </React.Fragment>
-                            ))}
+                                        </div>
+                                        {isEditing ? (
+                                            <div
+                                                style={{
+                                                    display: "flex",
+                                                    position: "fixed",
+                                                    marginLeft: "-20px",
+                                                    bottom: "0",
+                                                }}
+                                            >
+                                                <div className="avatar-user">
+                                                    <img
+                                                        src={userParse.avatar}
+                                                    ></img>
+                                                </div>
+                                                <div className="comment-input">
+                                                    <div
+                                                        className="input-wrapper"
+                                                        ref={replyInputRef}
+                                                    >
+                                                        <textarea
+                                                            id="comment-input"
+                                                            value={
+                                                                editedContent
+                                                            }
+                                                            onChange={(e) =>
+                                                                setEditedContent(
+                                                                    e.target
+                                                                        .value
+                                                                )
+                                                            }
+                                                            ref={
+                                                                commentInputRef
+                                                            }
+                                                        ></textarea>
+
+                                                        <button
+                                                            className="btn-comment"
+                                                            onClick={
+                                                                handleSaveEdit
+                                                            }
+                                                        >
+                                                            Cập nhật
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <button
+                                                        className="btn-undo"
+                                                        onClick={undoEdit}
+                                                    >
+                                                        Huỷ
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            ""
+                                        )}
+                                        {commentChild
+                                            ?.filter(
+                                                (commentChildItem) =>
+                                                    commentChildItem.parentCommentId ===
+                                                    comment.id
+                                            )
+                                            .map((commentChildItem) => (
+                                                <div
+                                                    key={commentChildItem.id}
+                                                    className="comment-item-child"
+                                                >
+                                                    <div>
+                                                        <img
+                                                            src={
+                                                                commentChildItem
+                                                                    .User.avatar
+                                                            }
+                                                            alt="avatar"
+                                                            className="avatar-user-comment-item"
+                                                        />
+                                                    </div>
+                                                    <div>
+                                                        <h4
+                                                            style={{
+                                                                marginBottom:
+                                                                    "8px",
+                                                            }}
+                                                        >
+                                                            {
+                                                                commentChildItem
+                                                                    .User
+                                                                    .username
+                                                            }
+                                                        </h4>
+                                                        <em>
+                                                            "
+                                                            {
+                                                                commentChildItem.commentText
+                                                            }
+                                                            "
+                                                        </em>
+                                                        <div
+                                                            style={{
+                                                                width: "41vw",
+                                                                display: "flex",
+                                                                justifyContent:
+                                                                    "flex-end",
+                                                            }}
+                                                        >
+                                                            {commentChildItem &&
+                                                            commentChildItem.User &&
+                                                            commentChildItem
+                                                                .User.id &&
+                                                            userParse &&
+                                                            userParse.id &&
+                                                            parseInt(
+                                                                commentChildItem
+                                                                    .User.id
+                                                            ) ===
+                                                                parseInt(
+                                                                    userParse.id
+                                                                ) ? (
+                                                                <div>
+                                                                    <span
+                                                                        style={{
+                                                                            color: "red",
+                                                                            marginRight:
+                                                                                "10px",
+                                                                            cursor: "pointer",
+                                                                            display:
+                                                                                "inline-block",
+                                                                        }}
+                                                                        onClick={() =>
+                                                                            handleDeleteComment(
+                                                                                commentChildItem.id
+                                                                            )
+                                                                        }
+                                                                    >
+                                                                        Xóa
+                                                                    </span>
+                                                                    <span
+                                                                        style={{
+                                                                            color: "yellow",
+                                                                            marginRight:
+                                                                                "10px",
+                                                                            cursor: "pointer",
+                                                                            display:
+                                                                                "inline-block",
+                                                                        }}
+                                                                        onClick={() =>
+                                                                            handleEditClick(
+                                                                                commentChildItem
+                                                                            )
+                                                                        }
+                                                                    >
+                                                                        Sửa
+                                                                    </span>
+                                                                </div>
+                                                            ) : (
+                                                                ""
+                                                            )}
+                                                            {token ? (
+                                                                <span
+                                                                    style={{
+                                                                        color: "green",
+                                                                        cursor: "pointer",
+                                                                    }}
+                                                                    onClick={() =>
+                                                                        handleReplyClick(
+                                                                            commentChildItem
+                                                                                .User
+                                                                                .username,
+                                                                            comment.id
+                                                                        )
+                                                                    }
+                                                                >
+                                                                    Trả lời
+                                                                </span>
+                                                            ) : (
+                                                                ""
+                                                            )}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                    </React.Fragment>
+                                ))
+                            ) : (
+                                <div
+                                    style={{
+                                        width: "100%",
+                                        textAlign: "center",
+                                    }}
+                                >
+                                    <em style={{ color: "green" }}>
+                                        Chưa có bình luận nào
+                                    </em>
+                                </div>
+                            )}
                         </div>
                     </div>
 

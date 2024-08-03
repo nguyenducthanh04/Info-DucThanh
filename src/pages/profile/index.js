@@ -109,27 +109,41 @@ function Profile() {
                                 </div>
                                 <div className="list-comment-mobile">
                                     <h3>Bình luận đã viết</h3>
-                                    {commentByUser?.map((item) => (
-                                        <Link
-                                            to={`/blog-detail/${item.MarkDownBlog.title}`}
-                                            className="comment-link-mobile"
+                                    {commentByUser &&
+                                    commentByUser.length > 0 ? (
+                                        commentByUser?.map((item) => (
+                                            <Link
+                                                to={`/blog-detail/${item.MarkDownBlog.title}`}
+                                                className="comment-link-mobile"
+                                            >
+                                                <div className="comment-mobile">
+                                                    <div>
+                                                        <img
+                                                            src={user.avatar}
+                                                            alt="avatar"
+                                                            className="avatar-user-comment-mobile"
+                                                        ></img>
+                                                    </div>
+                                                    <div>
+                                                        <em>
+                                                            "{item.commentText}"
+                                                        </em>
+                                                    </div>
+                                                </div>
+                                            </Link>
+                                        ))
+                                    ) : (
+                                        <div
+                                            style={{
+                                                width: "100%",
+                                                textAlign: "center",
+                                            }}
                                         >
-                                            <div className="comment-mobile">
-                                                <div>
-                                                    <img
-                                                        src={user.avatar}
-                                                        alt="avatar"
-                                                        className="avatar-user-comment-mobile"
-                                                    ></img>
-                                                </div>
-                                                <div>
-                                                    <em>
-                                                        "{item.commentText}"
-                                                    </em>
-                                                </div>
-                                            </div>
-                                        </Link>
-                                    ))}
+                                            <em style={{ color: "green" }}>
+                                                Chưa có bình luận nào
+                                            </em>
+                                        </div>
+                                    )}
                                 </div>
                                 <div className="btn-mobile">
                                     <button
@@ -163,27 +177,41 @@ function Profile() {
                                 </div>
                                 <div className="list-comment">
                                     <h3>Bình luận đã viết</h3>
-                                    {commentByUser?.map((item) => (
-                                        <Link
-                                            to={`/blog-detail/${item.MarkDownBlog.title}`}
-                                            className="comment-link"
+                                    {commentByUser &&
+                                    commentByUser.length > 0 ? (
+                                        commentByUser?.map((item) => (
+                                            <Link
+                                                to={`/blog-detail/${item.MarkDownBlog.title}`}
+                                                className="comment-link"
+                                            >
+                                                <div className="comment">
+                                                    <div>
+                                                        <img
+                                                            src={user.avatar}
+                                                            alt="avatar"
+                                                            className="avatar-user-comment"
+                                                        ></img>
+                                                    </div>
+                                                    <div>
+                                                        <em>
+                                                            "{item.commentText}"
+                                                        </em>
+                                                    </div>
+                                                </div>
+                                            </Link>
+                                        ))
+                                    ) : (
+                                        <div
+                                            style={{
+                                                width: "100%",
+                                                textAlign: "center",
+                                            }}
                                         >
-                                            <div className="comment">
-                                                <div>
-                                                    <img
-                                                        src={user.avatar}
-                                                        alt="avatar"
-                                                        className="avatar-user-comment"
-                                                    ></img>
-                                                </div>
-                                                <div>
-                                                    <em>
-                                                        "{item.commentText}"
-                                                    </em>
-                                                </div>
-                                            </div>
-                                        </Link>
-                                    ))}
+                                            <em style={{ color: "green" }}>
+                                                Chưa có bình luận nào
+                                            </em>
+                                        </div>
+                                    )}
                                 </div>
                                 <div className="btn">
                                     <button
