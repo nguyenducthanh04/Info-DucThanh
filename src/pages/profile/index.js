@@ -64,7 +64,7 @@ function Profile() {
                 const response = await axios.get(
                     `${baseUrl}/blog/get-comment-by-user/${user.id}`
                 );
-                setCommentByUser(response.data);
+                setCommentByUser(response.data.data);
             } else {
                 console.log("Thông tin người dùng chưa sẵn sàng");
             }

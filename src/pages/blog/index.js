@@ -16,8 +16,8 @@ function Blog() {
                 const response = await axios.get(
                     `${baseUrl}/blog/get-all-blog`
                 );
-                setBlogs(response.data);
-                console.log(response.data);
+                setBlogs(response.data.data);
+                console.log(response.data.data);
             } catch (error) {
                 console.error("Error saving blog:", error);
             }

@@ -48,7 +48,7 @@ function BlogDetail() {
                 const response = await axios.get(
                     `${baseUrl}/blog/get-blog/${title}`
                 );
-                setBlogDataDetail(response.data);
+                setBlogDataDetail(response.data.data);
                 setBlogDataLoaded(true);
             }
         } catch (error) {
@@ -66,7 +66,7 @@ function BlogDetail() {
                 const response = await axios.get(
                     `${baseUrl}/blog/get-all-comment/${blogDataDetail.id}`
                 );
-                setComments(response.data);
+                setComments(response.data.data);
                 console.log("i:", response.data);
             }
         } catch (error) {
@@ -80,7 +80,7 @@ function BlogDetail() {
                 const response = await axios.get(
                     `${baseUrl}/blog/get-comment-child/${blogDataDetail.id}`
                 );
-                setCommentChild(response.data);
+                setCommentChild(response.data.data);
             }
         } catch (error) {
             console.error("Error fetching comments:", error);
@@ -157,7 +157,10 @@ function BlogDetail() {
     };
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        if (!inputValue || inputValue.trim() === "") {
+            toast.warning("Vui lòng nhập nội dung bình luận.");
+            return;
+        }
         try {
             const response = await axios.post(`${baseUrl}/blog/add-comment`, {
                 blogId: blogDataDetail.id,
@@ -177,7 +180,6 @@ function BlogDetail() {
     };
     const handleSubmitCommentChild = async (e) => {
         e.preventDefault();
-
         try {
             const response = await axios.post(`${baseUrl}/blog/rep-comment`, {
                 blogId: blogDataDetail.id,
@@ -199,6 +201,12 @@ function BlogDetail() {
     };
     const handleSaveEdit = async () => {
         try {
+            if (!editedContent || editedContent.trim() === "") {
+                toast.warning(
+                    "Vui lòng không để trống nội dung khi sửa bình luận."
+                );
+                return;
+            }
             await axios.put(`${baseUrl}/blog/edit-comment`, {
                 commentId: currentCommentId,
                 content: editedContent,
