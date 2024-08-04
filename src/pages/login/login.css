@@ -30,14 +30,14 @@
     height: 40px;
     border-radius: 8px;
     background: transparent;
-    border: solid 1px orangered;
+    border: solid 1px green;
     cursor: pointer;
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     &:hover {
-        background: orangered;
+        background: green;
     }
 }
 .btn-login-google em {
