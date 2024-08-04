@@ -37,9 +37,6 @@ function Sefl() {
         };
         fetchInterestData();
     }, []);
-    // useEffect(() => {
-    //     document.body.style.backgroundColor = isDarkMode ? "black" : "white";
-    // }, [isDarkMode]);
     return (
         <div>
             {isMobile ? (
@@ -131,7 +128,7 @@ function Sefl() {
                                                     <div className="image-person-mobile">
                                                         <img
                                                             src={
-                                                                interest.urlImagePerson
+                                                                interest.imagePerson
                                                             }
                                                         ></img>
                                                     </div>
@@ -150,7 +147,7 @@ function Sefl() {
                                                             <em>
                                                                 "
                                                                 {
-                                                                    interest.content
+                                                                    interest.saidPerson
                                                                 }
                                                                 "
                                                             </em>
@@ -253,7 +250,7 @@ function Sefl() {
                                                     <div className="image-person">
                                                         <img
                                                             src={
-                                                                interest.urlImagePerson
+                                                                interest.imagePerson
                                                             }
                                                         ></img>
                                                     </div>
@@ -267,7 +264,7 @@ function Sefl() {
                                                             <em>
                                                                 "
                                                                 {
-                                                                    interest.content
+                                                                    interest.saidPerson
                                                                 }
                                                                 "
                                                             </em>
