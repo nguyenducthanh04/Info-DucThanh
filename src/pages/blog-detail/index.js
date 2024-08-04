@@ -21,6 +21,7 @@ function BlogDetail() {
     const [isReplying, setIsReplying] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
     const [editedContent, setEditedContent] = useState("");
+    const [emailRespondent, setEmailRespondent] = useState(null);
     const [currentCommentId, setCurrentCommentId] = useState(null);
     const commentInputRef = useRef(null);
 
@@ -120,12 +121,14 @@ function BlogDetail() {
         setEditedContent(req.commentText);
         setCurrentCommentId(req.id);
     };
-    const handleReplyClick = (username, commentId) => {
+    const handleReplyClick = (username, commentId, respondent) => {
         setReplyTo(`@${username} `);
         setInputValue(`@${username} `);
         setIdComment(commentId);
+        setEmailRespondent(respondent);
         handleRocket();
     };
+
     const handleDeleteComment = async (commentId) => {
         try {
             const confirmed = window.confirm(
@@ -186,6 +189,7 @@ function BlogDetail() {
                 userId: userParse.id,
                 commentText: inputValue,
                 parentCommentId: IdComment,
+                emailRespondent: emailRespondent,
             });
 
             await fetchCommentChild();
@@ -383,7 +387,10 @@ function BlogDetail() {
                                                                         comment
                                                                             .User
                                                                             .username,
-                                                                        comment.id
+                                                                        comment.id,
+                                                                        comment
+                                                                            .User
+                                                                            .email
                                                                     )
                                                                 }
                                                             >
@@ -501,7 +508,10 @@ function BlogDetail() {
                                                                                 commentChildItem
                                                                                     .User
                                                                                     .username,
-                                                                                comment.id
+                                                                                comment.id,
+                                                                                commentChildItem
+                                                                                    .User
+                                                                                    .email
                                                                             )
                                                                         }
                                                                     >
@@ -732,7 +742,9 @@ function BlogDetail() {
                                                                 handleReplyClick(
                                                                     comment.User
                                                                         .username,
-                                                                    comment.id
+                                                                    comment.id,
+                                                                    comment.User
+                                                                        .email
                                                                 )
                                                             }
                                                         >
@@ -913,7 +925,10 @@ function BlogDetail() {
                                                                             commentChildItem
                                                                                 .User
                                                                                 .username,
-                                                                            comment.id
+                                                                            comment.id,
+                                                                            commentChildItem
+                                                                                .User
+                                                                                .email
                                                                         )
                                                                     }
                                                                 >
