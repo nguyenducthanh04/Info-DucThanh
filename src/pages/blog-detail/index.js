@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import { ToastContainer, toast } from "react-toastify";
 import { FaCheckCircle } from "react-icons/fa";
@@ -303,14 +303,19 @@ function BlogDetail() {
                                     comments?.map((comment) => (
                                         <React.Fragment key={comment.id}>
                                             <div className="comment-item-mobile">
-                                                <div className="avatar-user-comment-item-mobile">
-                                                    <img
-                                                        src={
-                                                            comment.User.avatar
-                                                        }
-                                                        alt="avatar"
-                                                    ></img>
-                                                </div>
+                                                <Link
+                                                    to={`/profile-user/:${comment.User.username}`}
+                                                >
+                                                    <div className="avatar-user-comment-item-mobile">
+                                                        <img
+                                                            src={
+                                                                comment.User
+                                                                    .avatar
+                                                            }
+                                                            alt="avatar"
+                                                        ></img>
+                                                    </div>
+                                                </Link>
                                                 <div>
                                                     <h4
                                                         style={{
@@ -410,16 +415,20 @@ function BlogDetail() {
                                                 )
                                                 .map((commentChildItem) => (
                                                     <div className="comment-item-child-mobile">
-                                                        <div className="avatar-user-comment-item-mobile">
-                                                            <img
-                                                                src={
-                                                                    commentChildItem
-                                                                        .User
-                                                                        .avatar
-                                                                }
-                                                                alt="avatar"
-                                                            ></img>
-                                                        </div>
+                                                        <Link
+                                                            to={`/profile-user/${commentChildItem.User.username}`}
+                                                        >
+                                                            <div className="avatar-user-comment-item-mobile">
+                                                                <img
+                                                                    src={
+                                                                        commentChildItem
+                                                                            .User
+                                                                            .avatar
+                                                                    }
+                                                                    alt="avatar"
+                                                                ></img>
+                                                            </div>
+                                                        </Link>
                                                         <div>
                                                             <h4
                                                                 style={{
@@ -662,13 +671,19 @@ function BlogDetail() {
                                 comments?.map((comment) => (
                                     <React.Fragment key={comment.id}>
                                         <div className="comment-item">
-                                            <div>
-                                                <img
-                                                    src={comment.User.avatar}
-                                                    alt="avatar"
-                                                    className="avatar-user-comment-item"
-                                                />
-                                            </div>
+                                            <Link
+                                                to={`/profile-user/${comment.User.username}`}
+                                            >
+                                                <div>
+                                                    <img
+                                                        src={
+                                                            comment.User.avatar
+                                                        }
+                                                        alt="avatar"
+                                                        className="avatar-user-comment-item"
+                                                    />
+                                                </div>
+                                            </Link>
                                             <div>
                                                 <h4
                                                     style={{
@@ -824,16 +839,21 @@ function BlogDetail() {
                                                     key={commentChildItem.id}
                                                     className="comment-item-child"
                                                 >
-                                                    <div>
-                                                        <img
-                                                            src={
-                                                                commentChildItem
-                                                                    .User.avatar
-                                                            }
-                                                            alt="avatar"
-                                                            className="avatar-user-comment-item"
-                                                        />
-                                                    </div>
+                                                    <Link
+                                                        to={`/profile-user/${commentChildItem.User.username}`}
+                                                    >
+                                                        <div>
+                                                            <img
+                                                                src={
+                                                                    commentChildItem
+                                                                        .User
+                                                                        .avatar
+                                                                }
+                                                                alt="avatar"
+                                                                className="avatar-user-comment-item"
+                                                            />
+                                                        </div>
+                                                    </Link>
                                                     <div>
                                                         <h4
                                                             style={{

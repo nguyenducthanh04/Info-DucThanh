@@ -12,6 +12,7 @@ import Login from "./pages/login/index.js";
 import Profile from "./pages/profile/index.js";
 import Blog from "./pages/blog/index.js";
 import BlogDetail from "./pages/blog-detail/index.js";
+import ProfileUser from "./pages/profile-user/index.js";
 const App = () => {
     return (
         <UserProvider>
@@ -37,6 +38,10 @@ const App = () => {
                             <Route
                                 path="/blog-detail/:title"
                                 element={<BlogDetail />}
+                            />
+                            <Route
+                                path="/profile-user/:name"
+                                element={<ProfileUser />}
                             />
                         </Routes>
                     </div>

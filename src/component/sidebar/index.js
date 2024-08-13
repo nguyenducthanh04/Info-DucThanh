@@ -15,9 +15,6 @@ function SideBar() {
     const toggleTheme = () => {
         setIsDarkMode((prevMode) => !prevMode);
     };
-    // useEffect(() => {
-    //     document.body.style.backgroundColor = isDarkMode ? "black" : "white";
-    // }, [isDarkMode]);
     return (
         <div style={{ marginTop: "21px" }}>
             {isMobile ? (
@@ -108,7 +105,7 @@ function SideBar() {
                                 ></img>
                             </div>
                             <div className="title-interest-mobile">
-                                <h5>BLOG</h5>
+                                <h5>BÀI VIẾT</h5>
                             </div>
                         </div>
                     </Link>
@@ -183,7 +180,7 @@ function SideBar() {
                                 ></img>
                             </div>
                             <div className="title-interest">
-                                <h3>BLOG</h3>
+                                <h3>BÀI VIẾT</h3>
                             </div>
                         </div>
                     </Link>

@@ -1,0 +1,124 @@
+.title-profile-mobile {
+    padding-top: 10px;
+}
+
+.main-self-profile {
+    background: #14b8a633;
+    color: white;
+    width: 48.5vw;
+    margin-left: 33px;
+    border-radius: 30px;
+    margin-bottom: 30px;
+    margin-top: 21px;
+    display: flex;
+    align-items: center;
+}
+.main-self-profile-mobile {
+    background: #14b8a633;
+    width: 90vw;
+    margin-top: 30px;
+    border-radius: 30px;
+    margin-bottom: 120px;
+    color: white;
+}
+.users {
+    display: flex;
+}
+.avatar-user-current {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+.info-user {
+    margin: 30px;
+    width: 100%;
+}
+.btn {
+    width: 850px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    justify-items: end;
+    margin-top: 40px;
+}
+.btn-logout {
+    width: 80px;
+    height: 30px;
+    justify-self: end;
+    cursor: pointer;
+    background: transparent;
+    border: solid 1px green;
+    color: white;
+    &:hover {
+        background: green;
+    }
+}
+.list-comment {
+    margin-top: 50px;
+}
+.comment {
+    display: flex;
+    padding: 5px 0px;
+    border-bottom: solid 1px green;
+    margin-bottom: 20px;
+}
+.avatar-user-comment {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+/* Mobile */
+.users-mobile {
+    display: flex;
+    padding-top: 20px;
+}
+.avatar-user-current-mobile {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+.info-user-mobile {
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 30px;
+}
+.btn-mobile {
+    width: 80vw;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    justify-items: end;
+    margin-top: 40px;
+}
+.btn-logout-mobile {
+    width: 80px;
+    height: 30px;
+    justify-self: end;
+    cursor: pointer;
+    background: transparent;
+    border: solid 1px green;
+    color: white;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+.list-comment-mobile {
+    margin-top: 50px;
+}
+.comment-mobile {
+    display: flex;
+    padding: 5px 0px;
+    border-bottom: solid 1px green;
+    margin-bottom: 15px;
+}
+.avatar-user-comment-mobile {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+.comment-link-mobile,
+.comment-link {
+    text-decoration: none;
+    color: white;
+}
