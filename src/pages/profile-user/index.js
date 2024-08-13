@@ -9,10 +9,8 @@ import { baseUrl } from "../../api-url/base-url.js";
 import LoginPage from "../login/index.js";
 function ProfileUser() {
     const { name } = useParams();
-    console.log("name:", name);
     const [isDarkMode, setIsDarkMode] = useState(false);
     const [userProfile, setUserProfile] = useState(null);
-    const [token, setToken] = useState(null);
     const [commentByUser, setCommentByUser] = useState([]);
     const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
     useEffect(() => {
@@ -29,6 +27,7 @@ function ProfileUser() {
             setCommentByUser(userProfile.comments);
         }
     }, [userProfile]);
+    const token = localStorage.getItem("token");
     return (
         <div>
             {token ? (
