@@ -33,6 +33,15 @@
 .container img {
     width: 46vw;
 }
+@media (width: 1669px) {
+    .main-self-blog-detail {
+        width: 47vw;
+    }
+    .container img {
+        width: 44vw;
+    }
+}
+
 .container-mobile img {
     width: 80vw;
 }
@@ -160,6 +169,11 @@
     border-bottom: solid 1px green;
     margin-bottom: 20px;
     margin-left: 40px;
+}
+@media (width: 1669px) {
+    .comment-item-child {
+        margin-left: 30px;
+    }
 }
 .avatar-user-comment-item {
     width: 40px;

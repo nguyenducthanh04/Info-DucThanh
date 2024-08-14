@@ -9,6 +9,7 @@
     display: flex;
     align-items: center;
 }
+
 .main-self-profile-mobile {
     background: #14b8a633;
     width: 90vw;
@@ -16,6 +17,21 @@
     border-radius: 30px;
     margin-bottom: 120px;
     color: white;
+}
+.btn {
+    width: 850px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    justify-items: end;
+    margin-top: 40px;
+}
+@media (width: 1669px) {
+    .main-self-profile {
+        width: 47vw;
+    }
+    .btn {
+        width: auto;
+    }
 }
 .users {
     display: flex;
@@ -29,13 +45,7 @@
 .info-user {
     margin: 30px;
 }
-.btn {
-    width: 850px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    justify-items: end;
-    margin-top: 40px;
-}
+
 .btn-logout {
     width: 80px;
     height: 30px;

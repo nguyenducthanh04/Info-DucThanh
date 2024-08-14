@@ -14,6 +14,11 @@
     border-radius: 30px;
     margin-bottom: 30px;
 }
+@media (width: 1669px) {
+    .main-self {
+        width: 47vw;
+    }
+}
 .education-title {
     border-bottom: solid 3px #ee82ee;
     width: 116px;

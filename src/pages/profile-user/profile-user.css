@@ -13,6 +13,11 @@
     display: flex;
     align-items: center;
 }
+@media (width: 1669px) {
+    .main-self-profile {
+        width: 47vw;
+    }
+}
 .main-self-profile-mobile {
     background: #14b8a633;
     width: 90vw;
@@ -34,7 +39,7 @@
     margin: 30px;
     width: 100%;
 }
-.btn {
+/* .btn {
     width: 850px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -52,7 +57,7 @@
     &:hover {
         background: green;
     }
-}
+} */
 .list-comment {
     margin-top: 50px;
 }
