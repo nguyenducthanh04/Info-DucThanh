@@ -5,7 +5,7 @@
 .main-self-profile {
     background: #14b8a633;
     color: white;
-    width: 48.5vw;
+    width: 60vw;
     margin-left: 33px;
     border-radius: 30px;
     margin-bottom: 30px;
@@ -13,11 +13,7 @@
     display: flex;
     align-items: center;
 }
-@media (width: 1669px) {
-    .main-self-profile {
-        width: 47vw;
-    }
-}
+
 .main-self-profile-mobile {
     background: #14b8a633;
     width: 90vw;
@@ -39,25 +35,7 @@
     margin: 30px;
     width: 100%;
 }
-/* .btn {
-    width: 850px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    justify-items: end;
-    margin-top: 40px;
-}
-.btn-logout {
-    width: 80px;
-    height: 30px;
-    justify-self: end;
-    cursor: pointer;
-    background: transparent;
-    border: solid 1px green;
-    color: white;
-    &:hover {
-        background: green;
-    }
-} */
+
 .list-comment {
     margin-top: 50px;
 }

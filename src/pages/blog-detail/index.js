@@ -329,7 +329,7 @@ function BlogDetail() {
                                                     </em>
                                                     <div
                                                         style={{
-                                                            width: "60vw",
+                                                            width: "62vw",
                                                             display: "flex",
                                                             justifyContent:
                                                                 "flex-end",
@@ -451,7 +451,7 @@ function BlogDetail() {
                                                             </em>
                                                             <div
                                                                 style={{
-                                                                    width: "50vw",
+                                                                    width: "52vw",
                                                                     display:
                                                                         "flex",
                                                                     justifyContent:
@@ -695,7 +695,7 @@ function BlogDetail() {
                                                 <em>"{comment.commentText}"</em>
                                                 <div
                                                     style={{
-                                                        width: "43vw",
+                                                        width: "55vw",
                                                         display: "flex",
                                                         justifyContent:
                                                             "flex-end",
@@ -876,7 +876,7 @@ function BlogDetail() {
                                                         </em>
                                                         <div
                                                             style={{
-                                                                width: "41vw",
+                                                                width: "53vw",
                                                                 display: "flex",
                                                                 justifyContent:
                                                                     "flex-end",

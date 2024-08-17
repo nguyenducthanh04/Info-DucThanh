@@ -92,17 +92,13 @@
 .main-self-blog {
     background: #14b8a633;
     color: white;
-    width: 48.5vw;
+    width: 60vw;
     margin-left: 33px;
     border-radius: 30px;
     margin-bottom: 30px;
     margin-top: 21px;
 }
-@media (width: 1669px) {
-    .main-self-blog {
-        width: 47vw;
-    }
-}
+
 .blog-title {
     border-bottom: solid 3px #ee82ee;
     width: 110px;
@@ -182,11 +178,7 @@
 .date-submitted {
     margin-top: 50px;
 }
-@media (width: 1669px) {
-    .date-submitted {
-        margin-top: 30px;
-    }
-}
+
 .date-submitted-mobile {
     margin-top: 20px;
 }

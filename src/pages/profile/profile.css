@@ -1,7 +1,7 @@
 .main-self-profile {
     background: #14b8a633;
     color: white;
-    width: 48.5vw;
+    width: 60vw;
     margin-left: 33px;
     border-radius: 30px;
     margin-bottom: 30px;
@@ -25,14 +25,7 @@
     justify-items: end;
     margin-top: 40px;
 }
-@media (width: 1669px) {
-    .main-self-profile {
-        width: 47vw;
-    }
-    .btn {
-        width: auto;
-    }
-}
+
 .users {
     display: flex;
 }
