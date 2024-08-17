@@ -57,6 +57,7 @@
     border-radius: 20px;
     display: flex;
     align-items: center;
+    margin-bottom: 15px;
 }
 
 .name-blog-mobile {
