@@ -38,6 +38,9 @@ function Blog() {
                         <div className="blog-title-mobile">
                             <h1>Bài viết</h1>
                         </div>
+                        <div class="warningg-mobile">
+                        <p>Chức năng đang được bảo trì...</p>
+                        </div>
                         <div className="my-blog-mobile">
                             <div className="blog-content-mobile">
                                 {blogs?.map((blog) => (
@@ -95,6 +98,9 @@ function Blog() {
                     <div className="blog">
                         <div className="blog-title">
                             <h1>Bài viết</h1>
+                        </div>
+                        <div class="warningg">
+                        <p>Chức năng đang được bảo trì...</p>
                         </div>
                         <div className="my-blog">
                             <div className="blog-content">

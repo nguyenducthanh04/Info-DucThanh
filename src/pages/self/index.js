@@ -59,10 +59,7 @@ function Sefl() {
                                     Nghệ Thông Tin.
                                 </p>
                                 <p className="p-2-mobile">
-                                    Nhưng ước mơ của mình vẫn là được đứng trong
-                                    hàng ngũ của lực lượng CAND, mình luôn phấn
-                                    đấu hết mình để không phải hối tiếc điều gì
-                                    ở tuổi trẻ.
+                                    Mình luôn phấn đấu hết mình học hỏi các công nghệ mới nhất, để bổ sung thật nhiều vào kiến thức công nghệ của mình.
                                 </p>
                             </div>
                         </div>
@@ -113,10 +110,9 @@ function Sefl() {
                             </div>
                             <div className="slide-mobile">
                                 <Slide key={interests.length}>
-                                    {interests?.map((interest) => (
+                                    {/* {interests?.map((interest) => ( */}
                                         <div
                                             className="each-slide-effect-mobile"
-                                            key={interest.id}
                                         >
                                             <div
                                                 style={{
@@ -128,15 +124,13 @@ function Sefl() {
                                                     <div className="image-person-mobile">
                                                         <img
                                                             src={
-                                                                interest.imagePerson
+                                                                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFJuDEjucREp6YH0a2abgVax1k6KJc8yzEFw&s"
                                                             }
                                                         ></img>
                                                     </div>
                                                     <div className="person-info-mobile">
                                                         <h3 className="name-person-mobile">
-                                                            {
-                                                                interest.namePerson
-                                                            }
+                                                                Chủ tịch Hồ Chí Minh    
                                                         </h3>
                                                         <div
                                                             classname="said-mobile"
@@ -146,9 +140,7 @@ function Sefl() {
                                                         >
                                                             <em>
                                                                 "
-                                                                {
-                                                                    interest.saidPerson
-                                                                }
+                                                                Học để làm việc, làm người, làm cán bộ. Học để phụng sự Đoàn thể. Giai cấp nhân dân. Tổ quốc và nhân loại. Muốn đạt được mục đích phải cần, kiệm, liêm chính, chí công vô tư.
                                                                 "
                                                             </em>
                                                         </div>
@@ -156,7 +148,44 @@ function Sefl() {
                                                 </div>
                                             </div>
                                         </div>
-                                    ))}
+                                        <div
+                                            className="each-slide-effect-mobile"
+                                        >
+                                            <div
+                                                style={{
+                                                    background: ``,
+                                                    borderRadius: "20px",
+                                                }}
+                                            >
+                                                <div className="motivation-item-mobile">
+                                                    <div className="image-person-mobile">
+                                                        <img
+                                                            src={
+                                                                "https://nld.mediacdn.vn/291774122806476800/2024/7/18/1-1693191071441870096385-1721285198080592141214.jpeg"
+                                                            }
+                                                        ></img>
+                                                    </div>
+                                                    <div className="person-info-mobile">
+                                                        <h3 className="name-person-mobile">
+                                                                Tổng bí thư Nguyễn Phú Trọng   
+                                                        </h3>
+                                                        <div
+                                                            classname="said-mobile"
+                                                            style={{
+                                                                width: "150px",
+                                                            }}
+                                                        >
+                                                            <em>
+                                                                "
+                                                                Cái quý nhất của con người là cuộc sống và danh dự sống, bởi đời người chỉ sống có 1 lần. Phải sống sao cho khỏi xót xa, ân hận vì những năm tháng đã sống hoài, sống phí, để khỏi hổ thẹn vì những việc làm ty tiện, đớn hèn, cả đời ta, tất cả sức ta, ta đã hiến dâng cho sự nghiệp cao đẹp nhất trên đời - sự nghiệp đấu tranh giải phóng dân tộc, giải phóng con người, mang lại hạnh phúc cho Nhân dân!"
+                                                                "
+                                                            </em>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {/* ))} */}
                                 </Slide>
                             </div>
                         </div>
@@ -181,10 +210,7 @@ function Sefl() {
                                     Nghệ Thông Tin.
                                 </p>
                                 <p className="p-2">
-                                    Nhưng ước mơ của mình vẫn là được đứng trong
-                                    hàng ngũ của lực lượng CAND, mình luôn phấn
-                                    đấu hết mình để không phải hối tiếc điều gì
-                                    ở tuổi trẻ.
+                                Mình luôn phấn đấu hết mình học hỏi các công nghệ mới nhất, để bổ sung thật nhiều vào kiến thức công nghệ của mình.
                                 </p>
                             </div>
                         </div>
@@ -235,10 +261,9 @@ function Sefl() {
                             </div>
                             <div className="slide">
                                 <Slide key={interests.length}>
-                                    {interests?.map((interest) => (
+                                    {/* {interests?.map((interest) => ( */}
                                         <div
                                             className="each-slide-effect"
-                                            key={interest.id}
                                         >
                                             <div
                                                 style={{
@@ -250,22 +275,18 @@ function Sefl() {
                                                     <div className="image-person">
                                                         <img
                                                             src={
-                                                                interest.imagePerson
+                                                                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFJuDEjucREp6YH0a2abgVax1k6KJc8yzEFw&s"
                                                             }
                                                         ></img>
                                                     </div>
                                                     <div className="person-info">
                                                         <h3 className="name-person">
-                                                            {
-                                                                interest.namePerson
-                                                            }
+                                                            Chủ tịch Hồ Chí Minh
                                                         </h3>
                                                         <div classname="said">
                                                             <em>
                                                                 "
-                                                                {
-                                                                    interest.saidPerson
-                                                                }
+                                                                Học để làm việc, làm người, làm cán bộ. Học để phụng sự Đoàn thể. Giai cấp nhân dân. Tổ quốc và nhân loại. Muốn đạt được mục đích phải cần, kiệm, liêm chính, chí công vô tư.
                                                                 "
                                                             </em>
                                                         </div>
@@ -273,7 +294,39 @@ function Sefl() {
                                                 </div>
                                             </div>
                                         </div>
-                                    ))}
+                                        <div
+                                            className="each-slide-effect"
+                                        >
+                                            <div
+                                                style={{
+                                                    background: ``,
+                                                    borderRadius: "20px",
+                                                }}
+                                            >
+                                                <div className="motivation-item">
+                                                    <div className="image-person">
+                                                        <img
+                                                            src={
+                                                                "https://nld.mediacdn.vn/291774122806476800/2024/7/18/1-1693191071441870096385-1721285198080592141214.jpeg"
+                                                            }
+                                                        ></img>
+                                                    </div>
+                                                    <div className="person-info">
+                                                        <h3 className="name-person">
+                                                            Tổng bí thư Nguyễn Phú Trọng
+                                                        </h3>
+                                                        <div classname="said">
+                                                            <em>
+                                                                "
+                                                                Cái quý nhất của con người là cuộc sống và danh dự sống, bởi đời người chỉ sống có 1 lần. Phải sống sao cho khỏi xót xa, ân hận vì những năm tháng đã sống hoài, sống phí, để khỏi hổ thẹn vì những việc làm ty tiện, đớn hèn, cả đời ta, tất cả sức ta, ta đã hiến dâng cho sự nghiệp cao đẹp nhất trên đời - sự nghiệp đấu tranh giải phóng dân tộc, giải phóng con người, mang lại hạnh phúc cho Nhân dân!"
+                                                                "
+                                                            </em>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {/* ))} */}
                                 </Slide>
                             </div>
                         </div>

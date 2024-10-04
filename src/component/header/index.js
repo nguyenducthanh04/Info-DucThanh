@@ -92,29 +92,6 @@ function Header() {
                                         ></img>
                                     </div>
                                 </Link>
-                                {isDarkMode ? (
-                                    <div
-                                        className="icon-mobile"
-                                        onClick={toggleTheme}
-                                    >
-                                        <img
-                                            src={worldLight}
-                                            className="icon-world-light-mobile"
-                                            alt="world"
-                                        ></img>
-                                    </div>
-                                ) : (
-                                    <div
-                                        className="icon-mobile"
-                                        onClick={toggleTheme}
-                                    >
-                                        <img
-                                            src={worldDark}
-                                            className="icon-world-dark-mobile"
-                                            alt="world"
-                                        ></img>
-                                    </div>
-                                )}
                                 <Link to={"/profile"}>
                                     {/* <div className="icon-mobile-last">
                                         <img
@@ -235,23 +212,6 @@ function Header() {
                                         ></img>
                                     </div>
                                 </Link>
-                                {isDarkMode ? (
-                                    <div className="icon" onClick={toggleTheme}>
-                                        <img
-                                            src={worldLight}
-                                            className="icon-world-light"
-                                            alt="world"
-                                        ></img>
-                                    </div>
-                                ) : (
-                                    <div className="icon" onClick={toggleTheme}>
-                                        <img
-                                            src={worldDark}
-                                            className="icon-world-dark"
-                                            alt="world"
-                                        ></img>
-                                    </div>
-                                )}
                                 <Link to={"/profile"}>
                                     {userData ? (
                                         <img
